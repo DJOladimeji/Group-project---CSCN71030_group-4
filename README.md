@@ -35,6 +35,7 @@ Another function called deletePatient() with no input parameters and void return
 Then, a function called updateInfo() with no input parameters and void return type will ask for the doctor's or patient's information whose personal information is to be changed and will open the doctor/patient file according to that person which will be updated with new information. 
 
 Ilyas Yusuf
+
 Read_Hospital_File: The hospital module will have a function of void type that takes a file pointers as a parameter. The function will open that file, then fill the 2D array with its content. This function will be void type and will have no return. 
 
 Save_to_Hospital_File: This function will be void type and take a file pointer as its parameter. The function will write each element of the 2D array line by line to the hospital text file.
