@@ -15,5 +15,5 @@ typedef struct patient
 
 
 PATIENT CreatePatient(char[], char[], int, char[]);
-void PrintPatient();
+void PrintPatient(PATIENT);
 void PrintPatientToFile(FILE*, PATIENT);

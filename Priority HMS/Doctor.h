@@ -2,7 +2,7 @@
 //.h file for create doctor (doctor module)
 
 #include <stdio.h>
-#define MAXCHARACTER 50
+#define MAXCHARACTER 50 
 
 typedef struct doctor
 {
@@ -13,5 +13,5 @@ typedef struct doctor
 
 
 DOCTOR CreateDoctor(char[], char[], char[]);
-void PrintDoctor();
+void PrintDoctor(DOCTOR);
 void PrintDoctorToFile(FILE*, DOCTOR);
