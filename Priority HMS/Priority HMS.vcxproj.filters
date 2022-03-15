@@ -21,6 +21,9 @@
     <ClCompile Include="Doctor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Patient.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Doctor.h">

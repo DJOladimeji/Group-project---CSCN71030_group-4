@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include "Patient.h"
+
+#define MAXCHARACTER 50
+
+PATIENT CreatePatient(char* Firstname[], char* Lastname[], int* Healthcardnumber, char* PatientInfo[])
+{
+	PATIENT p;
+
+	strncpy_s(p.firstname, MAXCHARACTER, Firstname, MAXCHARACTER);
+	strncpy_s(p.lastname, MAXCHARACTER, Lastname, MAXCHARACTER);
+	p.healthcardnumber = Healthcardnumber; 
+	strncpy_s(p.patientinfo, MAXCHARACTER, PatientInfo, MAXCHARACTER);
+
+	return p;
+}
+
+void PrintPatient(PATIENT p)
+{
+	printf("Patient: %s, %s, %d\n", p.firstname, p.lastname, p.healthcardnumber);
+	printf("Patient Information: %s", p.patientinfo);
+}
+
+void PrintPatientToFile(FILE* fp, PATIENT p)
+{
+	fprintf(fp, "Patient: %s, %s, %d\n", p.firstname, p.lastname, p.healthcardnumber);
+	fprintf(fp, "Patient Information: %s", p.patientinfo);
+}

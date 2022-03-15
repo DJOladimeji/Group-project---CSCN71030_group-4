@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Doctor.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="Patient.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Doctor.h" />

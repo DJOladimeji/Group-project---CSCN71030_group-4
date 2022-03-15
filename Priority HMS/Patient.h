@@ -9,7 +9,7 @@ typedef struct patient
 {
 	char firstname[MAXCHARACTER];
 	char lastname[MAXCHARACTER];
-	int healthcarnumber;
+	int healthcardnumber;
 	char patientinfo[MAXCHARACTER];
 }PATIENT; 
 
