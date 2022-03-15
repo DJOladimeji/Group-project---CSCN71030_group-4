@@ -23,5 +23,5 @@ void PrintDoctorToFile(FILE* fp, DOCTOR d)
 {
 	fprintf(fp, "%s ", d.firstname);
 	fprintf(fp, "%s ", d.lastname);
-	fprinf(fp, " %s", d.department); 
+	fprintf(fp, " %s", d.department); 
 }
