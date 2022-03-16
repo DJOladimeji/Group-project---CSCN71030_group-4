@@ -16,7 +16,11 @@ DOCTOR CreateDoctor(char* Firstname[], char* Lastname[], char* Department[])
 
 void PrintDoctor(DOCTOR d) 
 {
-	printf("Doctor Name: %s %s", d.firstname, d.lastname); 
+	printf("\n");
+	printf("********************************\n");
+	printf("Doctor Name: %s %s\n", d.firstname, d.lastname); 
+	printf("Doctor department: %s\n", d.department);
+	printf("********************************\n");
 }
 
 void PrintDoctorToFile(FILE* fp, DOCTOR d)
