@@ -11,6 +11,8 @@ DOCTOR CreateDoctor(char* Firstname[], char* Lastname[], char* Department[])
 	strncpy_s(d.lastname, MAXCHARACTER, Lastname, MAXCHARACTER);
 	strncpy_s(d.department, MAXCHARACTER, Department, MAXCHARACTER); 
 
+	d.index = 0;
+
 	return d; 
 }
 
@@ -27,5 +29,5 @@ void PrintDoctorToFile(FILE* fp, DOCTOR d)
 {
 	fprintf(fp, "%s ", d.firstname);
 	fprintf(fp, "%s ", d.lastname);
-	fprintf(fp, " %s", d.department); 
+	fprintf(fp, " %s\n", d.department); 
 }
