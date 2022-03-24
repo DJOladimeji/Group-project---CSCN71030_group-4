@@ -47,3 +47,9 @@ Delete_From_Hospital: This function will remove the doctor in the current sessio
 Check_Hospital: The purpose of this function is to check if the doctor in the current session is already have their information in the hospital. This is to prevent duplicate entries into the array and text files. It will iterate through the array and use strstr function to see if the current doctor has their name in the array. This function will be void type and return nothing. The parameters of the function is a hospital structure and a string. 
 
 Display_Population: This function will print to the screen the number of doctors there are in the hospital as well as sum the total number of patients the whole hospital has. The purpose of this function is to aid the doctor in their choice of hospital because some doctors could make their choice based on the hospital population.  
+
+Max Dabski:
+
+signUp: This will take in username and password parameters in the form of separate char pointers. It will use the parameters to create a new doctor file after verifying with the registry file that one with a matching username does not already exist. It will also add the doctor to a user-specified hospital's file. It will return 1 if unsuccessful and 0 if successful.
+
+logIn: This will take in username and password parameters in the form of separate char pointers. It will use the parameters to load data from an existing doctor file into a doctor object after verifying with the registry file that the given username and password match those of an existing account. It will also allow the user to modify the information in the doctor account via a text-based interface, modifying doctor and hospital files accordingly. It will return 1 if unsuccessful and 0 if successful.
