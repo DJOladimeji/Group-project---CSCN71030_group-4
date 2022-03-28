@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Priority HMS", "Priority HMS\Priority HMS.vcxproj", "{2DDCE94A-5534-4CCE-8905-B70A37FC4B49}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DoctorModuleUnitTest", "DoctorModuleUnitTest\DoctorModuleUnitTest.vcxproj", "{8E472F90-384D-48D6-A1BD-2DB8A440AE35}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DoctorandPatientModuleUnitTest", "DoctorModuleUnitTest\DoctorModuleUnitTest.vcxproj", "{8E472F90-384D-48D6-A1BD-2DB8A440AE35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
