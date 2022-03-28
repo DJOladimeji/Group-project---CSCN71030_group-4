@@ -23,7 +23,7 @@ void PrintDoctor(DOCTOR d)
 	printf("********************************\n");
 	printf("Doctor Name: %s %s\n", d.firstname, d.lastname); 
 	printf("Doctor department: %s\n", d.department);
-	printf("********************************\n");
+	printf("********************************\n\n");
 }
 
 DOCTOR addPatienttoDoctor(DOCTOR d, PATIENT pat)
@@ -37,7 +37,7 @@ DOCTOR addPatienttoDoctor(DOCTOR d, PATIENT pat)
 
 void PrintDoctorToFile(FILE* fp, DOCTOR d)
 {
-	fprintf(fp, "%s ", d.firstname);
+	fprintf(fp, "Doctor: %s ", d.firstname);
 	fprintf(fp, "%s - ", d.lastname);
 	fprintf(fp, "Department: %s\n\n", d.department); 
 }

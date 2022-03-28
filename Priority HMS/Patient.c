@@ -22,7 +22,7 @@ void PrintPatient(PATIENT p)
 	printf("********************************\n");
 	printf("Patient: %s %s - Health card number: %d\n", p.firstname, p.lastname, p.healthcardnumber);
 	printf("Patient Information: %s\n", p.patientinfo);
-	printf("********************************\n");
+	printf("********************************\n\n");
 }
 
 void PrintPatientToFile(FILE* fp, PATIENT p)
