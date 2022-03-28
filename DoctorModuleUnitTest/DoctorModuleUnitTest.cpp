@@ -63,7 +63,7 @@ namespace DoctorModuleUnitTest
 			fclose(fp);
 
 			//*****************************************************************************************
-			char expected[] = "David Oladimeji Clinic";
+			char expected[] = "David Oladimeji - Department: Clinic";
 			//*****************************************************************************************
 
 			FILE* secondfp;

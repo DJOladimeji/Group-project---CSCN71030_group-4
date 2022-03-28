@@ -38,6 +38,6 @@ DOCTOR addPatienttoDoctor(DOCTOR d, PATIENT pat)
 void PrintDoctorToFile(FILE* fp, DOCTOR d)
 {
 	fprintf(fp, "%s ", d.firstname);
-	fprintf(fp, "%s ", d.lastname);
-	fprintf(fp, "%s\n", d.department); 
+	fprintf(fp, "%s - ", d.lastname);
+	fprintf(fp, "Department: %s\n\n", d.department); 
 }
