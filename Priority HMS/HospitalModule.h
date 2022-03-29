@@ -1,5 +1,8 @@
 #pragma once
 #define HOSPITALSIZE 10
+#define HOSPITAL1 1
+#define HOSPITAL2 2
+#define HOSPITAL3 3 
 #include <stdio.h>
 #include <stdbool.h>
 
