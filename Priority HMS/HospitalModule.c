@@ -1,4 +1,5 @@
 #define MAXSTRINGLENGTH 50 
+#define HOSPITALSIZE 10
 #define _CRT_SECURE_NO_WARNINGS 
 #include "HospitalModule.h"
 #include <stdio.h>
@@ -8,14 +9,14 @@
 
 
 
-bool Add_to_Hospital(char* docfilename, char* hospital[10], unsigned int hospitalchoice) {
+bool Add_to_Hospital(char* docfilename, char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
 	bool Ishere = true;
 	bool IsAdded = false;
 	unsigned int index = 0;
 	Ishere = Check_Hospital(docfilename, hospital, &index);
 	if (!Ishere) {
 		//put name into array
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < HOSPITALSIZE; i++) {
 			if (strcmp(hospital[i], "") == 0) {
 				strcpy(hospital[i], docfilename);
 				IsAdded = true;
@@ -25,7 +26,7 @@ bool Add_to_Hospital(char* docfilename, char* hospital[10], unsigned int hospita
 	}
 	return IsAdded;
 }
-bool Delete_from_Hospital(char* docfilename, char* hospital[10], unsigned int hospitalchoice) {
+bool Delete_from_Hospital(char* docfilename, char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
 	bool Ishere = false;
 	bool IsDeleted = false;
 	unsigned int index;
@@ -36,9 +37,9 @@ bool Delete_from_Hospital(char* docfilename, char* hospital[10], unsigned int ho
 	}
 	return IsDeleted;
 }
-bool Check_Hospital(char* docfilename, char* hospital[10], unsigned int* index) {
+bool Check_Hospital(char* docfilename, char* hospital[HOSPITALSIZE], unsigned int* index) {
 	bool Ishere = false;
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < HOSPITALSIZE; i++) {
 		if (strcmp(docfilename, hospital[i]) == 0) {
 			Ishere = true;
 			*index = i;
@@ -46,10 +47,10 @@ bool Check_Hospital(char* docfilename, char* hospital[10], unsigned int* index) 
 	}
 	return Ishere;
 }
-char* getdocfilefromhospital(char* username, char* hospital[10]) {
+char* getdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 
 	char* filename;
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < HOSPITALSIZE; i++) {
 		filename = strstr(hospital[i], username);
 		if (filename != 0) {
 			break;
@@ -57,10 +58,10 @@ char* getdocfilefromhospital(char* username, char* hospital[10]) {
 	}
 	return filename;
 }
-int Display_Population(char* hospital[10]) {
+int Display_Population(char* hospital[HOSPITALSIZE]) {
 
 	unsigned int counter = 0;
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < HOSPITALSIZE; i++) {
 		if (*hospital[i] != 0) {
 			if (strcmp(hospital[i], "") != 0) {
 				counter++;
@@ -71,7 +72,7 @@ int Display_Population(char* hospital[10]) {
 	return counter;
 }
 void printhospital(char** hospital) {
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < HOSPITALSIZE; i++) {
 		if (*hospital[i] != 0) {
 			if (strcmp(hospital[i], "") != 0)
 				printf("%s\n", hospital[i]);
