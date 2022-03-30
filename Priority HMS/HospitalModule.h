@@ -14,4 +14,9 @@ bool CheckforDeletion(char*, char* [HOSPITALSIZE], unsigned int*);
 int HospitalPopulation(char* [HOSPITALSIZE]);
 char* getdocfilefromhospital(char*, char* [HOSPITALSIZE]);
 
-
+bool addUsertohospital(char*, char* [HOSPITALSIZE], unsigned int);
+bool deleteUserfromhospital(char*, char* [HOSPITALSIZE], unsigned int);
+bool readdocfilefromhospital(char*, char* [HOSPITALSIZE]);
+void hospitalstub(char* [HOSPITALSIZE]);
+void doctorstub();
+void createstring(char*);
