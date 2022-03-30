@@ -11,7 +11,7 @@ bool Add_to_Hospital(char*, char* [HOSPITALSIZE]);
 bool Delete_from_Hospital(char*, char* [HOSPITALSIZE]);
 bool CheckforInsertion(char*, char* [HOSPITALSIZE]);
 bool CheckforDeletion(char*, char* [HOSPITALSIZE], unsigned int*);
-int Display_Population(char* [HOSPITALSIZE]);
+int HospitalPopulation(char* [HOSPITALSIZE]);
 char* getdocfilefromhospital(char*, char* [HOSPITALSIZE]);
-void printhospital(char**);
+
 

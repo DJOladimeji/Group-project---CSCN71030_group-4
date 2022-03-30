@@ -67,7 +67,7 @@ char* getdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 	}
 	return filename;
 }
-int Display_Population(char* hospital[HOSPITALSIZE]) {
+int HospitalPopulation(char* hospital[HOSPITALSIZE]) {
 
 	unsigned int counter = 0;
 	for (int i = 0; i < HOSPITALSIZE; i++) {
@@ -80,13 +80,3 @@ int Display_Population(char* hospital[HOSPITALSIZE]) {
 	}
 	return counter;
 }
-void printhospital(char** hospital) {
-	for (int i = 0; i < HOSPITALSIZE; i++) {
-		if (*hospital[i] != 0) {
-			if (strcmp(hospital[i], "") != 0)
-				printf("%s\n", hospital[i]);
-		}
-	}
-
-}
-
