@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2ddce94a-5534-4cce-8905-b70a37fc4b49}</ProjectGuid>
-    <RootNamespace>PriorityHMS</RootNamespace>
+    <ProjectGuid>{d7af74f7-4bc6-49ed-b935-316b767a4ea7}</ProjectGuid>
+    <RootNamespace>testingfopens</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,16 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Doctor.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="Patient.c" />
+    <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Doctor.h" />
-    <ClInclude Include="Patient.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Text.txt" />
+    <Text Include="fopen.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
