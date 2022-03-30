@@ -52,6 +52,6 @@ HospitalPopulation: This function will return the number of file names there are
 
 Max Dabski:
 
-signUp: This will take in username and password parameters in the form of separate char pointers. It will use the parameters to create a new doctor file after verifying with the registry file that one with a matching username does not already exist. It will also add the doctor to a user-specified hospital's file. It will return 1 if unsuccessful and 0 if successful.
+signUp: This will take in username and hospital array parameters in the form of separate char pointers. It will use the parameters to create a new doctor file after verifying with the registry file that one with a matching username does not already exist. It will also add the doctor to a user-specified hospital's file. It will return 1 if unsuccessful and 0 if successful.
 
 logIn: This will take in username and password parameters in the form of separate char pointers. It will use the parameters to load data from an existing doctor file into a doctor object after verifying with the registry file that the given username and password match those of an existing account. It will also allow the user to modify the information in the doctor account via a text-based interface, modifying doctor and hospital files accordingly. It will return 1 if unsuccessful and 0 if successful.
