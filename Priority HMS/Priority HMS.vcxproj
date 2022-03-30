@@ -142,12 +142,20 @@
     <ClCompile Include="Doctor.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Patient.c" />
+    <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Doctor.h" />
     <ClInclude Include="Patient.h" />
+    <ClInclude Include="Source.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Gurjit.txt" />
+    <Text Include="Hospital1.txt" />
+    <Text Include="Hospital2.txt" />
+    <Text Include="Hospital3.txt" />
+    <Text Include="Login.txt" />
+    <Text Include="Singh.txt" />
     <Text Include="Text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
