@@ -9,11 +9,10 @@
 
 
 
-bool Add_to_Hospital(char* docfilename, char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
+bool Add_to_Hospital(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	bool Ishere = true;
 	bool IsAdded = false;
-	unsigned int index = 0;
-	Ishere = Check_Hospital(docfilename, hospital, &index);
+	Ishere = CheckforInsertion(docfilename, hospital);
 	if (!Ishere) {
 		//put name into array
 		for (int i = 0; i < HOSPITALSIZE; i++) {
@@ -26,20 +25,29 @@ bool Add_to_Hospital(char* docfilename, char* hospital[HOSPITALSIZE], unsigned i
 	}
 	return IsAdded;
 }
-bool Delete_from_Hospital(char* docfilename, char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
+bool Delete_from_Hospital(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	bool Ishere = false;
 	bool IsDeleted = false;
 	unsigned int index;
-	Ishere = Check_Hospital(docfilename, hospital, &index);
+	Ishere = CheckforDeletion (docfilename, hospital, &index); 
 	if (Ishere) {
 		strcpy(hospital[index], "");
 		IsDeleted = true;
 	}
 	return IsDeleted;
 }
-bool Check_Hospital(char* docfilename, char* hospital[HOSPITALSIZE], unsigned int* index) {
+bool CheckforInsertion(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	bool Ishere = false;
-	for (int i = 0; i < HOSPITALSIZE; i++) {
+	for (int i = 0; i < 10; i++) {
+		if (strcmp(docfilename, hospital[i]) == 0) {
+			Ishere = true;
+		}
+	}
+	return Ishere;
+}
+bool CheckforDeletion(char* docfilename, char* hospital[HOSPITALSIZE], unsigned int* index) {
+	bool Ishere = false;
+	for (int i = 0; i < 10; i++) {
 		if (strcmp(docfilename, hospital[i]) == 0) {
 			Ishere = true;
 			*index = i;
@@ -47,6 +55,7 @@ bool Check_Hospital(char* docfilename, char* hospital[HOSPITALSIZE], unsigned in
 	}
 	return Ishere;
 }
+
 char* getdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 
 	char* filename;
