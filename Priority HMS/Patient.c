@@ -4,6 +4,32 @@
 #define MAXCHARACTER 50
 #define MAXAMOUNTOFPATIENTINFO 1000
 
+PATIENT initializePateint()
+{
+	char patientfirstname[MAXCHARACTER];
+	char patientlastname[MAXCHARACTER];
+	int patienthealthcardnumber;
+	char patienthealthinfo[MAXAMOUNTOFPATIENTINFO];
+
+	printf("please enter patient information now\n");
+	printf("first name: ");
+	scanf_s("%s", patientfirstname, MAXCHARACTER);
+
+	printf("last name: ");
+	scanf_s("%s", patientlastname, MAXCHARACTER);
+
+	printf("health card number: ");
+	scanf_s("%d", &patienthealthcardnumber);
+
+	printf("health infromation: ");
+	scanf_s("%s", patienthealthinfo, MAXAMOUNTOFPATIENTINFO);
+
+	PATIENT pat;
+	pat = CreatePatient(&patientfirstname, &patientlastname, patienthealthcardnumber, &patienthealthinfo);
+
+	return pat;
+}
+
 PATIENT CreatePatient(char* Firstname[], char* Lastname[], int Healthcardnumber, char* PatientInfo[])
 {
 	PATIENT p;

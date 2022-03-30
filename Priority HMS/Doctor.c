@@ -4,6 +4,27 @@
 
 #define MAXCHARACTER 50
 
+DOCTOR initilizeDoctor()
+{
+	char firstname[MAXCHARACTER];
+	char lastname[MAXCHARACTER];
+	char department[MAXCHARACTER];
+
+	printf("please input first name: ");
+	scanf_s("%s", firstname, MAXCHARACTER);
+
+	printf("please input last name: ");
+	scanf_s("%s", lastname, MAXCHARACTER);
+
+	printf("please input department: ");
+	scanf_s("%s", department, MAXCHARACTER);
+
+	DOCTOR doc;
+	doc = CreateDoctor(&firstname, &lastname, &department);
+
+	return doc;
+}
+
 DOCTOR CreateDoctor(char* Firstname[], char* Lastname[], char* Department[])
 {
 	DOCTOR d;

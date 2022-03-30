@@ -13,7 +13,7 @@ typedef struct patient
 	char patientinfo[MAXAMOUNTOFPATIENTINFO];
 }PATIENT; 
 
-
+PATIENT initializePateint();
 PATIENT CreatePatient(char[], char[], int, char[]);
 void PrintPatient(PATIENT);
 void PrintPatientToFile(FILE*, PATIENT);
