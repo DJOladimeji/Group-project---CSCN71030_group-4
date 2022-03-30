@@ -18,18 +18,14 @@
 
 int main(void) {
     creatingDoctor();
-    /// <summary>
-    /// //ddds
-    /// </summary>
-    /// <param name=""></param>
-    /// <returns></returns>
+      
     logIn(); 
 
 	return 0; 
 } 
 
 
-void creatingDoctor() { 
+void creatingDoctor() {  
     printf("writeToDoctorPatientFile\n\n");
 
     char name[NAMELENGTH] = "Gurjit"; 
@@ -44,7 +40,7 @@ void creatingDoctor() {
 
 	fprintf(fp1, "%s", name); 
 	printf("\nInformation written\n"); 
-
+    // Added code
 	fclose(fp1);  
 
 
