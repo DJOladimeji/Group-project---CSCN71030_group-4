@@ -1,5 +1,3 @@
-#define MAXSTRINGLENGTH 50 
-#define HOSPITALSIZE 10
 #define _CRT_SECURE_NO_WARNINGS 
 #include "HospitalModule.h"
 #include <stdio.h>

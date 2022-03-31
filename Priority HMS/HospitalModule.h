@@ -1,4 +1,5 @@
 #pragma once
+#define MAXSTRINGLENGTH 50 
 #define HOSPITALSIZE 10
 #define HOSPITAL1 1
 #define HOSPITAL2 2

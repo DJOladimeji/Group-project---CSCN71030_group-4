@@ -8,10 +8,10 @@ extern "C" {
 }
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace UnitTest1
+namespace HospitalModuleTests
 {
-
-	TEST_CLASS(UnitTest1)
+	 
+	TEST_CLASS(HospitalModuleTests)
 	{
 	public:
 		//function test 
