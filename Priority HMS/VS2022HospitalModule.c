@@ -58,7 +58,7 @@ void Save_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoic
 	switch (hospitalchoice)
 	{
 	case(HOSPITAL1):
-		if ((fp = fopen("StMary.txt", "w")) == NULL) {
+		if ((fp = fopen("Hospital1.txt", "w")) == NULL) {
 			fprintf(stderr, "Error reading file\n\n");
 		}
 		else
@@ -72,7 +72,7 @@ void Save_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoic
 		}
 		break;
 	case(HOSPITAL2):
-		if ((fp = fopen("Cambridge.txt", "w")) == NULL) {
+		if ((fp = fopen("Hospital2.txt", "w")) == NULL) {
 			fprintf(stderr, "Error reading file\n\n");
 		}
 		else
@@ -86,7 +86,7 @@ void Save_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoic
 		}
 		break;
 	case(HOSPITAL3):
-		if ((fp = fopen("GrandRiver.txt", "w")) == NULL) {
+		if ((fp = fopen("Hospital3.txt", "w")) == NULL) {
 			fprintf(stderr, "Error reading file\n\n");
 		}
 		else
@@ -103,7 +103,60 @@ void Save_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoic
 		break;
 	}
 }
+void Read_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
+	FILE* fp;
+	switch (hospitalchoice)
+	{
+	case(HOSPITAL1):
 
+		if ((fp = fopen("StMary.txt", "r")) == NULL) {
+			fprintf(stderr, "Error reading file\n\n");
+		}
+		for (int i = 0; i < HOSPITALSIZE; i++) {
+			if (fp) {
+				if (fscanf(fp, "%s %s %d %d", string,num,, num,hospital[i]) == 1)
+				{
+				}
+			}
+		}
+		if (fp) {
+			fclose(fp);
+		}
+		break;
+	case(HOSPITAL2):
+		if ((fp = fopen("Cambridge.txt", "r")) == NULL) {
+			fprintf(stderr, "Error reading file\n\n");
+		}
+		if (fp) {
+			for (int i = 0; i < HOSPITALSIZE; i++) {
+				if (fscanf(fp, "%s", hospital[i]) == 1)
+				{
+				}
+			}
+		}
+		if (fp) {
+			fclose(fp);
+		}
+		break;
+	case(HOSPITAL3):
+		if ((fp = fopen("GrandRiver.txt", "r")) == NULL) {
+			fprintf(stderr, "Error reading file\n\n");
+		}
+		if (fp) {
+			for (int i = 0; i < HOSPITALSIZE; i++) {
+				if (fscanf(fp, "%s", hospital[i]) == 1)
+				{
+				}
+			}
+		}
+		if (fp) {
+			fclose(fp);
+		}
+		break;
+	default:
+		break;
+	}
+}
 bool addUsertohospital(char* username, char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
 	bool IsAdded = false;
 	char filename[MAXSTRINGLENGTH];
@@ -126,11 +179,12 @@ bool deleteUserfromhospital(char* username, char* hospital[HOSPITALSIZE], unsign
 	return IsDeleted;
 }
 
-bool readdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
+DOCTOR readdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 
-	bool isRead = false;
-	FILE* fp;
-	char string[MAXSTRINGLENGTH];
+	
+	DOCTOR doc; 
+	FILE* fp; 
+
 	char* filename = getdocfilefromhospital(username, hospital);
 	if (filename) {
 		if ((fp = fopen(filename, "r")) == NULL) {
@@ -138,21 +192,18 @@ bool readdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 		}
 		else
 		{
-			isRead = true;
+			
 			//this is where the read doc file function goes.What I have here is for testing purposes.
 
-			while (fgets(string, MAXSTRINGLENGTH, fp)) {
-				printf("%s", string);
-			}
 
 		}
 		if (fp) {
 			fclose(fp);
 		}
 	}
-	return isRead;
+	return doc; 
 }
-
+// doctor = readdoctorfromhospital(username, hospital1)
 char* getdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 
 	char* filename;

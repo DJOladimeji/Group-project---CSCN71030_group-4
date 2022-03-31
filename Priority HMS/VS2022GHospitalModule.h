@@ -7,8 +7,9 @@
 #define HOSPITAL3 3 
 #include <stdio.h>
 #include <stdbool.h>
-
-
+#include "Doctor.h" 
+void Read_Hospital_File(char* [HOSPITALSIZE], unsigned int);
+void Save_Hospital_File(char* [HOSPITALSIZE], unsigned int); 
 bool Add_to_Hospital(char*, char* [HOSPITALSIZE]);
 bool Delete_from_Hospital(char*, char* [HOSPITALSIZE]);
 bool CheckforInsertion(char*, char* [HOSPITALSIZE]);
@@ -18,7 +19,7 @@ char* getdocfilefromhospital(char*, char* [HOSPITALSIZE]);
 
 bool addUsertohospital(char*, char* [HOSPITALSIZE], unsigned int);
 bool deleteUserfromhospital(char*, char* [HOSPITALSIZE], unsigned int);
-bool readdocfilefromhospital(char*, char* [HOSPITALSIZE]);
+DOCTOR readdocfilefromhospital(char*, char* [HOSPITALSIZE]);
 void hospitalstub(char* [HOSPITALSIZE]);
 void doctorstub();
 void createstring(char*);
