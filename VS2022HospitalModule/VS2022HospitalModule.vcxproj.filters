@@ -15,48 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Doctor.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Patient.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VS2022HospitalModule.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Doctor.h">
+    <ClInclude Include="VS2022HospitalModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Patient.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VS2022GHospitalModule.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Hospital1.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="Hospital2.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="Hospital3.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="Login.txt">
-      <Filter>Source Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>
