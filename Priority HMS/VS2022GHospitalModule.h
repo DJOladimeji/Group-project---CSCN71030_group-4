@@ -16,10 +16,10 @@ bool CheckforInsertion(char*, char* [HOSPITALSIZE]);
 bool CheckforDeletion(char*, char* [HOSPITALSIZE], unsigned int*);
 int HospitalPopulation(char* [HOSPITALSIZE]);
 char* getdocfilefromhospital(char*, char* [HOSPITALSIZE]);
-
+//void switchhospital(char*, ); 
 bool addUsertohospital(char*, char* [HOSPITALSIZE], unsigned int);
 bool deleteUserfromhospital(char*, char* [HOSPITALSIZE], unsigned int);
-DOCTOR readdocfilefromhospital(char*, char* [HOSPITALSIZE]);
+//DOCTOR readdocfilefromhospital(char*, char* [HOSPITALSIZE]);
 void hospitalstub(char* [HOSPITALSIZE]);
 void doctorstub();
 void createstring(char*);

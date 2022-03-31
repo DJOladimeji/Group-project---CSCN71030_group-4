@@ -114,7 +114,7 @@ void Read_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoic
 		}
 		for (int i = 0; i < HOSPITALSIZE; i++) {
 			if (fp) {
-				if (fscanf(fp, "%s %s %d %d", string,num,, num,hospital[i]) == 1)
+				if (fscanf(fp, "%s",hospital[i]) == 1) 
 				{
 				}
 			}
@@ -178,7 +178,7 @@ bool deleteUserfromhospital(char* username, char* hospital[HOSPITALSIZE], unsign
 	Save_Hospital_File(hospital, hospitalchoice);
 	return IsDeleted;
 }
-
+/*
 DOCTOR readdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 
 	
@@ -203,7 +203,7 @@ DOCTOR readdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 	}
 	return doc; 
 }
-// doctor = readdoctorfromhospital(username, hospital1)
+*/
 char* getdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 
 	char* filename;

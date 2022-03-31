@@ -3,9 +3,9 @@
 
 extern "C"
 {
-#include "../Priority HMS/Doctor.h"
-#include "../Priority HMS/Patient.h"
-#include "../Priority HMS/Source.h"
+#include "Doctor.h"
+#include "Patient.h"
+#include "Source.h"
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
