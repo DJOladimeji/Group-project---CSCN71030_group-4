@@ -15,42 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
+    <ClCompile Include="ProrityHMStesting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Doctor.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Patient.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source.c">
+    <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Doctor.h">
+    <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Patient.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Hospital1.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="Hospital2.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="Hospital3.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="Login.txt">
-      <Filter>Source Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>

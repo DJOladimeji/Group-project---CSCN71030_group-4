@@ -1,6 +1,6 @@
 //CSCN71030 - Group 4 
 //March 15th - 2022 
-//Gurjit Singh 
+//Gurjit Singh
 
 #define _CRT_SECURE_NO_WARNINGS	
 
@@ -11,37 +11,42 @@
 #include <math.h> 
 #include <ctype.h> 
 #include "Source.h" 
+#include "Doctor.h"
+#include "Patient.h"
 
 #define NAMELENGTH 50 
 #define PASSWORDLENGTH 8 
 
 
-int main(void) {
+/*int main(void) {
     creatingDoctor();
       
     logIn(); 
 
 	return 0; 
-} 
+}*/ 
 
 
-void creatingDoctor() {  
+void creatingDoctor(DOCTOR d) {  
     printf("writeToDoctorPatientFile\n\n");
+    //char name[NAMELENGTH]; 
+    char firstname[NAMELENGTH];
 
-    char name[NAMELENGTH] = "Gurjit"; 
-    char tempName[NAMELENGTH]; 
-
-    //printf("Enter first name and last name:\n");
-    //scanf("%[^\n]", name, NAMELENGTH); 
-    strcpy(tempName, name); 
+    for (int i = 0; i < NAMELENGTH; i++)
+    {
+        firstname[i] = d.firstname[i];
+    }
+  
+    strcat(firstname, d.lastname);
+    strcpy(tempName, firstname); 
     strcat(tempName, ".txt"); 
 	FILE* fp1 = fopen(tempName, "w"); 
 
 
-	fprintf(fp1, "%s", name); 
+    PrintDoctorToFile(fp1, d);
 	printf("\nInformation written\n"); 
-    // Added code
 	fclose(fp1);  
+
 
 
     printf("\n\nwriteToLoginFile\n\n");
@@ -49,11 +54,10 @@ void creatingDoctor() {
     char username[NAMELENGTH];
     int password = 0;
 
-    printf("Now enter username(first name and last name without spaces):\n");
-    scanf("%s", username, NAMELENGTH); 
-
+    //printf("Now enter username(first name and last name without spaces):\n");
+    //scanf("%s", username, NAMELENGTH); 
     
-    int alphabet = 1, number = 0, i;
+    /*int alphabet = 1, number = 0, i;
 
     while (alphabet != 0 || number > 8) { 
         printf("\nEnter something:\n");
@@ -76,7 +80,7 @@ void creatingDoctor() {
         printf("Alphabetic_letters = %d, "
             "Decimal_digits = %d\n",
             alphabet, number);
-    } 
+    } */
 
 
     FILE* fp2 = fopen("Login.txt", "a");
@@ -86,7 +90,7 @@ void creatingDoctor() {
         exit(1);
     }
 
-    fprintf(fp2, "%s %d\n", username, password); 
+    fprintf(fp2, "%s%s %d\n", d.firstname, d.lastname, password); 
     printf("\nInformation written\n");
 
     fclose(fp2); 
@@ -94,13 +98,15 @@ void creatingDoctor() {
 
     printf("\n\nwriteToHospitalFile\n\n"); 
 
-    printf("Which hospital would you like to be placed in:\n\
+    /*printf("Which hospital would you like to be placed in:\n\
         \r1) Hospital 1\n\
         \r2) Hospital 2\n\
         \r3) Hospital 3\n"); 
 
     int hospitalNumber; 
-    scanf("%d", &hospitalNumber); 
+    scanf("%d", &hospitalNumber);*/
+
+    int hospitalNumber = 1;
 
     switch (hospitalNumber) { 
     case 1: {
@@ -111,7 +117,7 @@ void creatingDoctor() {
             exit(1);
         }
 
-        fprintf(fp3, "%s\n", name); 
+        fprintf(fp3, "%s %s\n", d.firstname, d.lastname); 
         printf("\nInformation written\n"); 
 
         fclose(fp3); 
@@ -126,7 +132,7 @@ void creatingDoctor() {
             exit(1);
         }
 
-        fprintf(fp3, "%s\n", name); 
+        fprintf(fp3, "%s %s\n", d.firstname, d.lastname); 
         printf("\nInformation written\n"); 
 
         fclose(fp3); 
@@ -141,7 +147,7 @@ void creatingDoctor() {
             exit(1);
         }
 
-        fprintf(fp3, "%s\n", name); 
+        fprintf(fp3, "%s %s\n", d.firstname, d.lastname); 
         printf("\nInformation written\n"); 
 
         fclose(fp3); 
@@ -193,7 +199,7 @@ void logIn() {
             {
                 printf("Username is correct\n\n"); 
 
-                addPatient(); 
+                //addPatient(); 
 
                 exit(1); 
             }  
@@ -213,28 +219,13 @@ void logIn() {
 } 
 
 
-void addPatient() {
+void addPatient(PATIENT pat) {
     printf("addPatient\n\n"); 
 
+    FILE* fp = fopen(tempName, "w");
 
-    //int i = 1; 
-    //char charValue = i + '0'; 
-    //printf("The character value is: %c\n", charValue); 
-
-    char name[NAMELENGTH]; 
-    char pastRecords[NAMELENGTH]; 
-
-    printf("Enter first name and last name of patient:\n");
-    scanf("%[^\n]", name, NAMELENGTH); 
-    scanf("%[^\n]", name, NAMELENGTH); 
-    printf("Enter any patient's past records:\n");
-    scanf("%[^\n]", pastRecords, NAMELENGTH); 
-    scanf("%[^\n]", pastRecords, NAMELENGTH); 
-
-    FILE* fp4 = fopen("DoctorPatient.txt", "a");
-
-    fprintf(fp4, "%s - Health Card # - Past records: %s\n", name, pastRecords); 
+    PrintPatientToFile(fp, pat);
     printf("\nInformation written\n");
 
-    fclose(fp4); 
+    fclose(fp); 
 }

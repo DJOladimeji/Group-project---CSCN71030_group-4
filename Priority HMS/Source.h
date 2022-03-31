@@ -3,8 +3,11 @@
 //Gurjit Singh 
 
 #pragma once
+#include <stdio.h> 
+#define NAMELENGTH 50  
 
+char tempName[NAMELENGTH];
 
-void creatingDoctor(); 
+void creatingDoctor(DOCTOR);   
 void logIn(); 
-void addPatient(); 
+void addPatient(PATIENT); 
