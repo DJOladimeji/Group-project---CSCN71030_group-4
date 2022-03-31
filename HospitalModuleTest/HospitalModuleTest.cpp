@@ -121,7 +121,7 @@ namespace HospitalModuleTests
 			}
 			unsigned int choice = HOSPITAL1;
 			hospitalstub(hospital);
-			int pop = Display_Population(hospital);
+			int pop = HospitalPopulation(hospital);
 			Assert::AreEqual(3, pop);
 		}
 		//integration test
