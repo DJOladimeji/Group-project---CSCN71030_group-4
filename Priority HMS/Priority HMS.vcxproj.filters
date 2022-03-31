@@ -58,5 +58,8 @@
     <Text Include="Login.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="DavidOladimeji.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
