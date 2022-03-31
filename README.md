@@ -48,6 +48,8 @@ CheckforInsertion: The purpose of this function is to check if the doctor in the
 
 CheckforDeletion: The purpose of this function is to check if the doctor file name is in the hospital so it can be deleted. This is to ensure that a file can only be deleted from a hospital if it's actually in that hospital. It will iterate through the array and use strcmp function to see if the current doctor has their name in the array. This function will be boolean type and return true if the file name is found, and false if not. The parameters of the function is a hospital array, an unsigned int pointer for the index of file to be deleted and the string of the file name to be added.
 
+CheckOtherHospitals: Checks all the hospitals to see if a file exists in one already. The function type will be boolean and will return true if the file is found in a hospital already. Otherwise it will return false.
+
 HospitalPopulation: This function will return the number of file names there are in the hospital. The purpose of this function is to aid the doctor in their choice of hospital because some doctors could make their choice based on the hospital population.  
 
 Max Dabski:
