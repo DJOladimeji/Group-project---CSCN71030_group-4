@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include "Doctor.h"
 #include "Patient.h"
@@ -87,7 +89,7 @@ DOCTOR readDocfileFromDoctorFile(char file) {
 	char fname[MAXCHARACTER];
 	char lname[MAXCHARACTER];
 	char depart[MAXCHARACTER];
-	int ind;
+	int ind = 0;
 
 
 	fp = fopen(file, "r");

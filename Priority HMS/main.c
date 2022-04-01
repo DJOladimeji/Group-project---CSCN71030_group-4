@@ -32,12 +32,19 @@ int main(int argc, char* argcv)
 		{
 		case 1:
 		{
+			//------------------------------------------------------------------  
+			//This will be the spot where you add where the function(s) go to sign up a doctor
+			//------------------------------------------------------------------
+			AfterLoginWindow();
 			break;
 		}
 
 		case 2:
 		{
 			logIn();
+			//---------------------------------------------------------------
+			//This is where code will go to get the users password and see if it is correct before continuing
+			//---------------------------------------------------------------
 			AfterLoginWindow(); 
 			break;
 		}
@@ -95,24 +102,41 @@ void AfterLoginWindow()
 		case 2:
 		{
 			printf("2. Remove a Patient\n");
+			//-------------------------------------------------------------------
+			//This is where code will go to call the function that will remove a patient 
+			//from the doctor file
+			//-------------------------------------------------------------------
 			break;
 		}
 
 		case 3:
 		{
 			printf("3. Edit Patient Information\n");
+			//-------------------------------------------------------------------
+			//This is where code will go to call the function that will append the doctor's 
+			//file to edit the patient information
+			//-------------------------------------------------------------------
 			break;
 		}
 
 		case 4:
 		{
 			printf("4. Delete Account\n");
+			//-------------------------------------------------------------------
+			//This is where code will go to call the functions that will erase the doctor file 
+			//and will remove their information from the hospital files they are in and their login in 
+			//info from the login text file
+			//-------------------------------------------------------------------
 			break;
 		}
 
 		case 5:
 		{
 			printf("5. Switch Hospitals\n");
+			//-------------------------------------------------------------------
+			//This is where code will go to call the function that will 'cut' the information from the 
+			//doctors current hospital fill and put it into the hospital file that they want
+			//-------------------------------------------------------------------
 			break;
 		}
 

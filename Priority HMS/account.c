@@ -39,6 +39,7 @@ int signUp(char* userName, /*char* firstname, char* lastname, */char* hospitalAr
 	unsigned int hospitalChoice = 0;
 	scanf_s(hospitalChoice, "%i", sizeof(unsigned int));
 
+	// Create A doctor
 	// Create new doctor file (gurjit)
 
 	// Add doctor filename to hospital (ilyas)
