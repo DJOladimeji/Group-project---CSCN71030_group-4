@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="account.c" />
     <ClCompile Include="Doctor.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Patient.c" />
@@ -158,6 +159,9 @@
     <Text Include="Hospital2.txt" />
     <Text Include="Hospital3.txt" />
     <Text Include="Login.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="account.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
