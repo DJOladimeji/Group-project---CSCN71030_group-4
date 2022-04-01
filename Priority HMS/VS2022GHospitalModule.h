@@ -20,7 +20,6 @@ char* getdocfilefromhospital(char*, char* [HOSPITALSIZE]);
 bool addUsertohospital(char*, char* [HOSPITALSIZE], unsigned int);
 bool deleteUserfromhospital(char*, char* [HOSPITALSIZE], unsigned int);
 //DOCTOR readdocfilefromhospital(char*, char* [HOSPITALSIZE]);
-DOCTOR readdocfilefromhospital(); //new to help read patient to doctor;
 void hospitalstub(char* [HOSPITALSIZE]);
 void doctorstub();
 void createstring(char*);
