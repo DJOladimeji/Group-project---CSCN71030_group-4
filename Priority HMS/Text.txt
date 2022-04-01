@@ -1,0 +1,8 @@
+Doctor: David Oladimeji - Department: Clinic
+
+Patient: John Mark - 123456
+Patient Information: Covid19
+
+Patient: Bruce Wane - 246812
+Patient Information: Cancer
+
