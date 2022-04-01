@@ -72,7 +72,7 @@ DOCTOR addPatienttoDoctor(DOCTOR d, PATIENT pat)
 	return d;
 }
 
-DOCTOR readdocfilefromhospital(char file) {
+DOCTOR readDocfileFromDoctorFile(char file) {
 	DOCTOR doc;
 	FILE* fp;
 

@@ -20,5 +20,5 @@ DOCTOR CreateDoctor(char[], char[], char[]);
 DOCTOR CreateDoctorAfter(char, char, char, int); 
 DOCTOR addPatienttoDoctor(DOCTOR, PATIENT);
 void PrintDoctor(DOCTOR);
-DOCTOR readdocfilefromhospital(char);
+DOCTOR readDocfileFromDoctorFile(char);
 void PrintDoctorToFile(FILE*, DOCTOR);

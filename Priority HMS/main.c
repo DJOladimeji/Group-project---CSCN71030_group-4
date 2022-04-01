@@ -87,7 +87,7 @@ void AfterLoginWindow()
 			PATIENT info;
 			info = initializePateint();
 			DOCTOR doctor;
-			doctor = readdocfilefromhospital(tempName);
+			doctor = readDocfileFromDoctorFile(tempName);
 			addPatienttoDoctor(doctor, info);
 			break;
 		}
