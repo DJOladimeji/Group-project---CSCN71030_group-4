@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Doctor.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="Patient.h" />
     <ClInclude Include="Source.h" />
     <ClInclude Include="VS2022GHospitalModule.h" />

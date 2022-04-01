@@ -60,5 +60,5 @@ void PrintDoctorToFile(FILE* fp, DOCTOR d)
 {
 	fprintf(fp, "Doctor: %s ", d.firstname);
 	fprintf(fp, "%s - ", d.lastname);
-	fprintf(fp, "Department: %s\n\n", d.department); 
+	fprintf(fp, "Department: %s - NUmber of Patient = %d\n\n", d.department, d.index); 
 }
