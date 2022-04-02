@@ -68,21 +68,26 @@ void PrintDoctor(DOCTOR d)
 	printf("********************************\n\n");
 }
 
-DOCTOR addPatienttoDoctor(DOCTOR d, PATIENT pat)
+DOCTOR addPatienttoDoctor(DOCTOR d, PATIENT pat, char* username)
 {
 	d.patient[d.index] = &pat;;
 	d.index++;
-	printf("The number of patients the doctor now has is: %d", d.index);
+	char filename[MAXCHARACTER];
+	strcpy(filename, username);
+	strcat(filename, ".txt"); 
+	//printf("The number of patients the doctor now has is: %d\n", d.index);
 
-	addPatient(pat);
+	addPatient(pat, filename); 
 
 	return d;
 }
 
-DOCTOR readDocfileFromDoctorFile(char file) {
+DOCTOR readDocfileFromDoctorFile(char* username, int* count) {
 	DOCTOR doc;
 	FILE* fp;
-
+	char filename[MAXCHARACTER]; 
+	strcpy(filename, username);
+	strcat(filename, ".txt");
 	char a1[MAXCHARACTER];
 	char a2[MAXCHARACTER];
 	char a3[MAXCHARACTER];
@@ -97,7 +102,7 @@ DOCTOR readDocfileFromDoctorFile(char file) {
 	int ind = 0;
 
 
-	fp = fopen(file, "r");
+	fp = fopen(filename, "r"); 
 
 	if (fp == NULL)
 	{
@@ -105,7 +110,7 @@ DOCTOR readDocfileFromDoctorFile(char file) {
 		//exit(1); 
 	}
 
-	fscanf(fp, "%s %s %s %s %s %s %s %s %s %s %s %d", a1, fname, lname, a2, a3, depart, a3, a4, a5, a6, a7, ind);
+	fscanf(fp, "%s %s %s %s %s %s %s %s %s %s %s %d", a1, fname, lname, a2, a3, depart, a3, a4, a5, a6, a7, &ind);
 
 	fclose(fp);
 	 
@@ -118,5 +123,5 @@ void PrintDoctorToFile(FILE* fp, DOCTOR d)
 {
 	fprintf(fp, "Doctor: %s ", d.firstname);
 	fprintf(fp, "%s - ", d.lastname);
-	fprintf(fp, "Department: %s - NUmber of Patient = %d\n\n", d.department, d.index); 
+	fprintf(fp, "Department: %s - Number of Patient = %d\n\n", d.department, d.index); 
 }

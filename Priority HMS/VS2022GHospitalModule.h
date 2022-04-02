@@ -16,7 +16,7 @@ bool CheckforInsertion(char*, char* [HOSPITALSIZE]);
 bool CheckforDeletion(char*, char* [HOSPITALSIZE], unsigned int*);
 int HospitalPopulation(char* [HOSPITALSIZE]);
 char* getdocfilefromhospital(char*, char* [HOSPITALSIZE]);
-void switchhospital(char*, char*[HOSPITALSIZE], char*[HOSPITALSIZE], unsigned int, unsigned int);  
+void switchhospital(char*, char*[HOSPITALSIZE], unsigned int, char* [HOSPITALSIZE], unsigned int);
 bool addUsertohospital(char*, char* [HOSPITALSIZE], unsigned int);
 bool deleteUserfromhospital(char*, char* [HOSPITALSIZE], unsigned int);
 

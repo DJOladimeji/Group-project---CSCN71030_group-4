@@ -6,13 +6,13 @@
 #define PASS_LEN 10
 
 char* createpassword();
-int logIn(char*, char*,char*[MAX_HOSP_SIZE]);
+//int logIn(char*, char*,char*[MAX_HOSP_SIZE]);
 void AfterLoginWindow(char*[MAX_HOSP_SIZE], char*, char* ,unsigned int); 
 
-bool deleteUserName(char*, char*[30]);
+bool deleteUserName(char*, char*[30], unsigned int[30]);
 bool Delete_from_Usernames(char*, char* [30]);
 bool CheckUserNameforDeletion(char*, char*[30], unsigned int*);
-void Save_UserNames_File(char*[30]);
+void Save_UserNames_File(char*[30], unsigned int[30]);
 bool deletePasswords(char*, char* [30]); 
 bool Delete_from_Password(char*,char* [30]);
 bool CheckPasswordforDeletion(char*, char*[30], unsigned int*);

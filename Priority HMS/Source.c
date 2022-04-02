@@ -13,25 +13,17 @@
 #include "Source.h" 
 #include "Doctor.h"
 #include "Patient.h"
-
+#define PASS_LEN 10
 #define NAMELENGTH 50 
 #define PASSWORDLENGTH 8 
-
-
-/*int main(void) {
-    creatingDoctor();
-      
-    logIn(); 
-
-	return 0; 
-}*/ 
-
 
 void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
 
     char tempName[NAMELENGTH];
     char firstname[NAMELENGTH] = {0};
-    
+    char* username = 0; 
+    char* tp = 0; 
+    char tempPassword[PASS_LEN+1] = { 0 }; 
     for (int i = 0; i < (strlen(d.firstname) +1); i++)
     {
         if (d.firstname != NULL) {
@@ -40,7 +32,7 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
     }
     
     //makes doctor file name
-    strcat(firstname, d.lastname);
+    strcat(firstname, d.lastname); 
     strcat(firstname, ".txt");
     FILE* fp1 = fopen(firstname, "w");
 
@@ -50,9 +42,24 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
     fclose(fp1);
 
 
+    strcpy(tempName, d.firstname);
+    username = strcat(tempName, d.lastname);
+   
+    strcpy(tempPassword, password); 
+    int length = strlen(tempPassword);
+    char* allocatedpassword = (char*)malloc(length + 1); 
+    if (allocatedpassword) {
+        memset(allocatedpassword, 0, (length + 1));
+        strcpy(allocatedpassword, tempPassword); 
 
-    
-
+    }
+    int len = strlen(username);
+    char* allocatedstring = (char*)malloc(len + 1);
+    if (allocatedstring) {
+        memset(allocatedstring, 0, (len + 1));
+        strcpy(allocatedstring, username);  
+        
+    }
 
     FILE* fp2 = fopen("UserNames.txt", "a");
 
@@ -60,8 +67,8 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
         perror("Unable to open file\n");
         exit(1);
     }
-
-    fprintf(fp2, "%s%s %i\n", d.firstname, d.lastname, hospitalchoice);
+  
+    fprintf(fp2, "%s %i\n", allocatedstring, hospitalchoice); 
 
 
     fclose(fp2);
@@ -73,7 +80,7 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
         exit(1);
     }
 
-    fprintf(fp3, "%s\n",password ); 
+    fprintf(fp3, "%s\n",allocatedpassword );   
 
 
     fclose(fp3);
@@ -82,6 +89,8 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
      //fscanf("%s %s, username,password) grab the username and password
      //ilyasyusuf 123234234123
     //}
+    free(allocatedpassword);
+    free(allocatedstring); 
 }
 
 
@@ -205,13 +214,20 @@ int CheckPassword(char* password2) {
 }
 
 
-void addPatient(PATIENT pat) {
-    printf("addPatient\n\n"); 
-    char tempName[NAMELENGTH]; 
-    FILE* fp = fopen(tempName, "w");
+void addPatient(PATIENT pat, char* filename) { 
+    FILE* fp = fopen(filename, "a"); 
 
     PrintPatientToFile(fp, pat);
     printf("\nInformation written\n");
 
     fclose(fp); 
+}
+
+void createstring(char* string)
+{
+    char input[MAXCHARACTER];
+    if (fgets(input, MAXCHARACTER, stdin) != NULL) { 
+        input[strlen(input) - 1] = '\0';
+        strcpy(string, input); 
+    }
 }

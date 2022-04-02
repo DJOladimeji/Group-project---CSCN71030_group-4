@@ -18,7 +18,7 @@ typedef struct doctor
 DOCTOR initilizeDoctor(char[], char[], char[]);
 DOCTOR CreateDoctor(char[], char[], char[]);
 DOCTOR CreateDoctorAfter(char, char, char, int); 
-DOCTOR addPatienttoDoctor(DOCTOR, PATIENT);
+DOCTOR addPatienttoDoctor(DOCTOR, PATIENT, char*);
 void PrintDoctor(DOCTOR);
-DOCTOR readDocfileFromDoctorFile(char);
+DOCTOR readDocfileFromDoctorFile(char*);
 void PrintDoctorToFile(FILE*, DOCTOR);

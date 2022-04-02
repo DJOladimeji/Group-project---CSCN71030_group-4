@@ -190,7 +190,7 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 		int userschoice;  
 		scanf_s("%d", &userschoice); 
 		 
-		switch (userschoice) 
+		switch (userschoice)
 		{
 		case 1:
 		{
@@ -198,8 +198,8 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			PATIENT info;
 			info = initializePateint();
 			DOCTOR doctor;
-			doctor = readDocfileFromDoctorFile(tempName);
-			addPatienttoDoctor(doctor, info);
+			doctor = readDocfileFromDoctorFile(username); 
+			addPatienttoDoctor(doctor, info, username); 
 			break;
 		}
 
@@ -232,18 +232,22 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			//info from the login text file
 			//-------------------------------------------------------------------
 			unsigned int index = 0;
+
+			Read_Hospital_File(hospital, hospitalchoice);
 			Read_UserNames_File(usernamefiles, hospitalchoicearray);
-			Read_Passwords_File(passwordfiles); 
-			deleteUserName(username,usernamefiles); 
-			deletePasswords(password, passwordfiles);
 			for (int i = 0; i < 30; i++) {
 				if (usernamefiles[i]) {
 					if (strcmp(username, usernamefiles[i]) == 0) {
-						hospitalchoice = hospitalchoicearray[i]; 
+						hospitalchoice = hospitalchoicearray[i];
 					}
 				}
 			}
+			Read_Passwords_File(passwordfiles);
+			deleteUserName(username, usernamefiles, hospitalchoicearray);
+			deletePasswords(password, passwordfiles);
 			deleteUserfromhospital(username, hospital, hospitalchoice);
+			free(usernamefiles);
+			free(passwordfiles);
 			break;
 		}
 
@@ -256,14 +260,22 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			//-------------------------------------------------------------------
 			printf("choose hospital to move to\n");
 			int choice = 0;
-			
-			destinationhospital = malloc(10 * sizeof(char*)); 
-			for (int i = 0; i < 10; i++) {
-				if (destinationhospital) { 
-					destinationhospital[i] = malloc(MAXSTRINGLENGTH); 
-					if (destinationhospital[i]) { 
-						memset(destinationhospital[i], 0, MAXSTRINGLENGTH); 
 
+			destinationhospital = malloc(10 * sizeof(char*));
+			for (int i = 0; i < 10; i++) {
+				if (destinationhospital) {
+					destinationhospital[i] = malloc(MAXSTRINGLENGTH);
+					if (destinationhospital[i]) {
+						memset(destinationhospital[i], 0, MAXSTRINGLENGTH);
+
+					}
+				}
+			}
+			Read_UserNames_File(usernamefiles, hospitalchoicearray);
+			for (int i = 0; i < 30; i++) {
+				if (usernamefiles[i]) {
+					if (strcmp(username, usernamefiles[i]) == 0) {
+						hospitalchoice = hospitalchoicearray[i];
 					}
 				}
 			}
@@ -272,29 +284,61 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			{
 			case(HOSPITAL1):
 			{
-				Read_Hospital_File(destinationhospital, HOSPITAL1); 
-				switchhospital(username, hospital, hospitalchoice, destinationhospital, HOSPITAL1); 
-			}
+				Read_Hospital_File(destinationhospital, HOSPITAL1);
+				Read_Hospital_File(hospital, hospitalchoice);
+				switchhospital(username, hospital, hospitalchoice, destinationhospital, HOSPITAL1);
+				for (int i = 0; i < 30; i++) {
+					if (usernamefiles[i]) {
+						if (strcmp(username, usernamefiles[i]) == 0) {
+							hospitalchoicearray[i] = HOSPITAL1;
+
+						}
+					}
+				}
+				Save_UserNames_File(usernamefiles, hospitalchoicearray);
+				break;
 			case(HOSPITAL2):
 			{
 				Read_Hospital_File(destinationhospital, HOSPITAL2);
+				Read_Hospital_File(hospital, hospitalchoice);
 				switchhospital(username, hospital, hospitalchoice, destinationhospital, HOSPITAL2);
+				for (int i = 0; i < 30; i++) {
+					if (usernamefiles[i]) {
+						if (strcmp(username, usernamefiles[i]) == 0) {
+							hospitalchoicearray[i] = HOSPITAL2;
+
+						}
+					}
+				}
+				Save_UserNames_File(usernamefiles, hospitalchoicearray);
+				break;
 			}
 			case(HOSPITAL3):
 			{
 				Read_Hospital_File(destinationhospital, HOSPITAL3);
+				Read_Hospital_File(hospital, hospitalchoice);
 				switchhospital(username, hospital, hospitalchoice, destinationhospital, HOSPITAL3);
+				for (int i = 0; i < 30; i++) {
+					if (usernamefiles[i]) {
+						if (strcmp(username, usernamefiles[i]) == 0) {
+							hospitalchoicearray[i] = HOSPITAL3;
+
+						}
+					}
+				}
+				Save_UserNames_File(usernamefiles, hospitalchoicearray);
+				break;
 			}
 			default:
 				printf("not a valid choice!\n");
 				break;
 			}
-		}
 
+			}
+		}
 		case 6:
 		{
 			printf("6. Logout\n");
-			printf("Thank you\n");
 			ok = false;
 			if (usernamefiles) {
 				free(usernamefiles);
@@ -303,8 +347,8 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 				free(passwordfiles);
 			}
 			if (destinationhospital) {
-				free(destinationhospital);  
-			}		
+				free(destinationhospital);
+			}
 			break;
 		}
 
@@ -323,17 +367,18 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			}
 			break;
 		}
+		
 		}
 	}
 }
 
-bool deleteUserName(char* username, char* usernamefiles[30]) {
+bool deleteUserName(char* username, char* usernamefiles[30], unsigned int hospitalchoicearray[30]) {
 	bool IsDeleted = false;
 	char filename[MAXSTRINGLENGTH];
 
 	IsDeleted = Delete_from_Usernames(username, usernamefiles);
 	//call save hospital function.
-	Save_UserNames_File(usernamefiles);  
+	Save_UserNames_File(usernamefiles, hospitalchoicearray);   
 	return IsDeleted;
 }
 
@@ -347,7 +392,7 @@ bool Delete_from_Usernames(char* username, char* usernamefiles[30]) {
 		IsDeleted = true;
 	}
 	return IsDeleted;
-}
+} 
 
 bool CheckUserNameforDeletion(char* username, char* usernamefiles[30], unsigned int* index) {
 	bool Ishere = false;
@@ -358,18 +403,22 @@ bool CheckUserNameforDeletion(char* username, char* usernamefiles[30], unsigned 
 		}
 	}
 	return Ishere;
-}
+} 
 
-void Save_UserNames_File(char* usernamefiles[30]) {
+void Save_UserNames_File(char* usernamefiles[30], unsigned int hospitalchoicearray[30]) {
 	FILE* fp;
+	char* token = 0; 
+	
 		if ((fp = fopen("UserNames.txt", "w")) == NULL) {
 			fprintf(stderr, "Error reading file\n\n");
 		}
 		else
 		{
 			for (int i = 0; i < 30; i++) {
-				fprintf(fp, "%s\n", usernamefiles[i]);
-			}
+				if (strcmp(usernamefiles[i],"\0")!=0) {
+					fprintf(fp, "%s %i\n", usernamefiles[i], hospitalchoicearray[i]);
+				}
+ 			}
 		}
 		if (fp) {
 			fclose(fp);
@@ -383,7 +432,7 @@ void Read_UserNames_File(char* usernamefiles[30], unsigned int hospitalchoicearr
 		}
 		for (int i = 0; i < 30; i++) {
 			if (fp) {
-				if (fscanf(fp, "%s %i", usernamefiles[i], &hospitalchoicearray[30]) == 1) 
+				if (fscanf(fp, "%s %i", usernamefiles[i], &hospitalchoicearray[i]) == 1) 
 				{
 				}
 			}
