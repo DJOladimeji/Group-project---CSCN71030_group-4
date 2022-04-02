@@ -1,5 +1,0 @@
-Doctor: David Oladimeji - Department: Clinic
-
-Patient: John Smith - 128565
-Patient Information: Covid19
-
