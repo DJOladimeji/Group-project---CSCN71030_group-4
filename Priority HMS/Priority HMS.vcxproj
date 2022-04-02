@@ -158,7 +158,8 @@
     <Text Include="Hospital1.txt" />
     <Text Include="Hospital2.txt" />
     <Text Include="Hospital3.txt" />
-    <Text Include="Login.txt" />
+    <Text Include="Passwords.txt" />
+    <Text Include="UserNames.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="account.h" />

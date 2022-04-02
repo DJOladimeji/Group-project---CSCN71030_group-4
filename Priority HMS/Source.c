@@ -27,147 +27,74 @@
 }*/ 
 
 
-void creatingDoctor(DOCTOR d) {  
-    printf("writeToDoctorPatientFile\n\n");
-    //char name[NAMELENGTH]; 
-    char firstname[NAMELENGTH];
+void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
 
-    for (int i = 0; i < NAMELENGTH; i++)
-    {
-        firstname[i] = d.firstname[i];
-    }
-  
-    strcat(firstname, d.lastname);
-    strcpy(tempName, firstname); 
-    strcat(tempName, ".txt"); 
-	FILE* fp1 = fopen(tempName, "w"); 
-
-
-    PrintDoctorToFile(fp1, d);
-	printf("\nInformation written\n"); 
-	fclose(fp1);  
-
-
-
-    printf("\n\nwriteToLoginFile\n\n");
-
-    char username[NAMELENGTH];
-    int password = 0;
-
-    //printf("Now enter username(first name and last name without spaces):\n");
-    //scanf("%s", username, NAMELENGTH); 
+    char tempName[NAMELENGTH];
+    char firstname[NAMELENGTH] = {0};
     
-    /*int alphabet = 1, number = 0, i;
-
-    while (alphabet != 0 || number > 8) { 
-        printf("\nEnter something:\n");
-        char str[NAMELENGTH];
-        scanf("%s", str);
-
-        alphabet = 0, number = 0; 
-        for (i = 0; str[i] != '\0'; i++)
-        {
-
-            // check for alphabets
-            if (isalpha(str[i]) != 0)
-                alphabet++;
-
-            // check for decimal digits
-            else if (isdigit(str[i]) != 0)
-                number++;
+    for (int i = 0; i < (strlen(d.firstname) +1); i++)
+    {
+        if (d.firstname != NULL) {
+            firstname[i] = d.firstname[i];
         }
+    }
+    
+    //makes doctor file name
+    strcat(firstname, d.lastname);
+    strcat(firstname, ".txt");
+    FILE* fp1 = fopen(firstname, "w");
 
-        printf("Alphabetic_letters = %d, "
-            "Decimal_digits = %d\n",
-            alphabet, number);
-    } */
+    //writes to doctor file
+    PrintDoctorToFile(fp1, d);
+    printf("\nInformation written\n");
+    fclose(fp1);
 
 
-    FILE* fp2 = fopen("Login.txt", "a");
+
+    
+
+
+    FILE* fp2 = fopen("UserNames.txt", "a");
 
     if (fp2 == NULL) {
         perror("Unable to open file\n");
         exit(1);
     }
 
-    fprintf(fp2, "%s%s %d\n", d.firstname, d.lastname, password); 
-    printf("\nInformation written\n");
-
-    fclose(fp2); 
+    fprintf(fp2, "%s%s %i\n", d.firstname, d.lastname, hospitalchoice);
 
 
-    printf("\n\nwriteToHospitalFile\n\n"); 
+    fclose(fp2);
 
-    /*printf("Which hospital would you like to be placed in:\n\
-        \r1) Hospital 1\n\
-        \r2) Hospital 2\n\
-        \r3) Hospital 3\n"); 
+    FILE* fp3 = fopen("Passwords.txt", "a");
 
-    int hospitalNumber; 
-    scanf("%d", &hospitalNumber);*/
-
-    int hospitalNumber = 1;
-
-    switch (hospitalNumber) { 
-    case 1: {
-        FILE* fp3 = fopen("Hospital1.txt", "a");
-
-        if (fp3 == NULL) {
-            perror("Unable to open file\n");
-            exit(1);
-        }
-
-        fprintf(fp3, "%s %s\n", d.firstname, d.lastname); 
-        printf("\nInformation written\n"); 
-
-        fclose(fp3); 
-
-        break;
+    if (fp3 == NULL) {
+        perror("Unable to open file\n");
+        exit(1);
     }
-    case 2: {
-        FILE* fp3 = fopen("Hospital2.txt", "a");
 
-        if (fp3 == NULL) {
-            perror("Unable to open file\n");
-            exit(1);
-        }
+    fprintf(fp3, "%s\n",password ); 
 
-        fprintf(fp3, "%s %s\n", d.firstname, d.lastname); 
-        printf("\nInformation written\n"); 
 
-        fclose(fp3); 
+    fclose(fp3);
 
-        break;
-    } 
-    case 3: {
-        FILE* fp3 = fopen("Hospital3.txt", "a");
-
-        if (fp3 == NULL) {
-            perror("Unable to open file\n");
-            exit(1);
-        }
-
-        fprintf(fp3, "%s %s\n", d.firstname, d.lastname); 
-        printf("\nInformation written\n"); 
-
-        fclose(fp3); 
-
-        break;
-    }
-    default: {
-        printf("\nEnter correct number\n"); 
-    }
-    } 
+    //while not end of file{
+     //fscanf("%s %s, username,password) grab the username and password
+     //ilyasyusuf 123234234123
+    //}
 }
 
 
-void logIn() { 
-    printf("Login\n");
+
+//combine these two 
+//check login file for usernames
+int CheckUserName(char* username2) { 
+    
 
     char username[NAMELENGTH], buffer[NAMELENGTH];
     int n, m, i, j, line; 
 
-    FILE* fp = fopen("Login.txt", "r");
+    FILE* fp = fopen("UserNames.txt", "r");
 
     if (fp == NULL) {
         perror("Unable to open file\n"); 
@@ -177,6 +104,7 @@ void logIn() {
     printf("\nEnter username:\n"); 
     scanf_s("%s", username, NAMELENGTH); 
 
+  
     m = strlen(username); 
     line = 0; 
 
@@ -198,10 +126,9 @@ void logIn() {
             if ((i == n || buffer[i] == ' ' || buffer[i] == '\n') && j == m)
             {
                 printf("Username is correct\n\n"); 
-
-                //addPatient(); 
-
-                exit(1); 
+                strcpy(username2,username);  
+                fclose(fp); 
+                return 1;
             }  
 
             while (i < n && buffer[i] != ' ')
@@ -216,12 +143,71 @@ void logIn() {
     printf("Username is incorrect\n");
 
     fclose(fp); 
-} 
+    return 0; 
+}
+//check password file for password
+int CheckPassword(char* password2) {
+
+
+    char password[NAMELENGTH], buffer[NAMELENGTH];
+    int n, m, i, j, line;
+
+    FILE* fp = fopen("Passwords.txt", "r");
+
+    if (fp == NULL) {
+        perror("Unable to open file\n");
+        exit(1);
+    }
+
+    printf("\nEnter password:\n");
+    scanf_s("%s", password, NAMELENGTH);
+
+
+    m = strlen(password);
+    line = 0;
+
+    printf("\n");
+
+    while (fgets(buffer, NAMELENGTH, fp) != NULL)
+    {
+        i = 0;
+        n = strlen(buffer);
+
+        while (i < n)
+        {
+            j = 0;
+            while (i < n && j < m && buffer[i] == password[j])
+            {
+                ++i, ++j;
+            }
+
+            if ((i == n || buffer[i] == ' ' || buffer[i] == '\n') && j == m)
+            {
+                printf("Password is correct\n\n");
+                strcpy(password2, password); 
+                fclose(fp);
+                return 1;
+            }
+
+            while (i < n && buffer[i] != ' ')
+            {
+                ++i;
+            }
+            ++i;
+        }
+        ++line;
+    }
+
+    printf("Password is incorrect\n");
+
+    fclose(fp);
+    return 0;
+}
 
 
 void addPatient(PATIENT pat) {
     printf("addPatient\n\n"); 
-
+    char tempName[NAMELENGTH]; 
     FILE* fp = fopen(tempName, "w");
 
     PrintPatientToFile(fp, pat);

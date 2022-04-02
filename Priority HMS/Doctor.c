@@ -4,15 +4,16 @@
 #include "Doctor.h"
 #include "Patient.h"
 #include "Source.h"
+#include <string.h>
 
 #define MAXCHARACTER 50
 
-DOCTOR initilizeDoctor()
-{
+DOCTOR initilizeDoctor(char Firstname[], char Lastname[], char Department[])
+{	/*
 	char firstname[MAXCHARACTER];
 	char lastname[MAXCHARACTER];
 	char department[MAXCHARACTER];
-
+	
 	printf("please input first name: ");
 	scanf_s("%s", firstname, MAXCHARACTER);
 
@@ -21,18 +22,22 @@ DOCTOR initilizeDoctor()
 
 	printf("please input department: ");
 	scanf_s("%s", department, MAXCHARACTER);
-
+	*/
 	DOCTOR doc;
-	doc = CreateDoctor(&firstname, &lastname, &department);
+	//doc = CreateDoctor(&Firstname, &Lastname, &Department); 
+	strncpy_s(doc.firstname, MAXCHARACTER, Firstname, MAXCHARACTER);
+	strncpy_s(doc.lastname, MAXCHARACTER, Lastname, MAXCHARACTER);
+	strncpy_s(doc.department, MAXCHARACTER, Department, MAXCHARACTER);
 
+	doc.index = 0; 
 	return doc;
 }
-
+/*
 DOCTOR CreateDoctor(char* Firstname[], char* Lastname[], char* Department[])
 {
 	DOCTOR d;
 
-	strncpy_s(d.firstname, MAXCHARACTER, Firstname, MAXCHARACTER);  
+	strncpy_s(d.firstname, MAXCHARACTER, Firstname, MAXCHARACTER);   
 	strncpy_s(d.lastname, MAXCHARACTER, Lastname, MAXCHARACTER);
 	strncpy_s(d.department, MAXCHARACTER, Department, MAXCHARACTER); 
 
@@ -40,7 +45,7 @@ DOCTOR CreateDoctor(char* Firstname[], char* Lastname[], char* Department[])
 
 	return d; 
 }
-
+*/
 DOCTOR CreateDoctorAfter(char* Firstname[], char* Lastname[], char* Department[], int index)
 {
 	DOCTOR d;

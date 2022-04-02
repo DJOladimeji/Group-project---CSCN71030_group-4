@@ -1,10 +1,12 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+/*
 extern "C"
 {
 #include "../Priority HMS/Doctor.h"
 #include "../Priority HMS/Patient.h"
 }
+*/
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -17,7 +19,7 @@ namespace DoctorModuleUnitTest
 	TEST_CLASS(DoctorandPatientModuleUnitTest)
 	{
 	public:
-		
+		/*
 		TEST_METHOD(Testthecreationofdoctor)//testing to see of doctors is actually create when the CreateDocotr() function is called
 		{
 			char firstname[MAXCHARACTER] = "David";
@@ -230,5 +232,7 @@ namespace DoctorModuleUnitTest
 
 			Assert::AreEqual(1, isthere); 
 		}
+		*/
 	};
 }
+

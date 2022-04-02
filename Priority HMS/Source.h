@@ -4,10 +4,13 @@
 
 #pragma once
 #include <stdio.h> 
+#include "Doctor.h" 
+#include "Patient.h"
 #define NAMELENGTH 50  
 
-char tempName[NAMELENGTH];
 
-void creatingDoctor(DOCTOR);   
-void logIn(); 
+
+void writeDoctor(DOCTOR, char*, unsigned int );
+int CheckUserName(char*);  
+int CheckPassword(char*);
 void addPatient(PATIENT); 

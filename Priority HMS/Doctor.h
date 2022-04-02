@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include "Patient.h"
-#define MAXCHARACTER 50 
+#define MAXCHARACTER 50  
 #define MAXPATIENT 3
 
 typedef struct doctor
@@ -15,7 +15,7 @@ typedef struct doctor
 	int index;
 }DOCTOR;
 
-DOCTOR initilizeDoctor();
+DOCTOR initilizeDoctor(char[], char[], char[]);
 DOCTOR CreateDoctor(char[], char[], char[]);
 DOCTOR CreateDoctorAfter(char, char, char, int); 
 DOCTOR addPatienttoDoctor(DOCTOR, PATIENT);

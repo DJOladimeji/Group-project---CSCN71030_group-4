@@ -6,6 +6,7 @@ extern "C"
 #include "Doctor.h"
 #include "Patient.h"
 #include "Source.h"
+#include "account.h"
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -15,7 +16,7 @@ namespace integrationtests
 	TEST_CLASS(Files)
 	{
 	public:
-		
+		/*
 		TEST_METHOD(writingToDoctorPatientFile)
 		{
 			DOCTOR doc;
@@ -28,7 +29,7 @@ namespace integrationtests
 
 			char c[MAXCHARACTER];
 
-			creatingDoctor(doc);
+			writeDoctor(doc);
 
 			FILE* fp;
 			fopen_s(&fp, "GurjitSingh.txt", "r");
@@ -38,7 +39,8 @@ namespace integrationtests
 
 			Assert::AreEqual(expected, c);
 		}
-
+		*/
+		/*
 		TEST_METHOD(readingFromPatientFile)
 		{
 			PATIENT pat;
@@ -84,5 +86,7 @@ namespace integrationtests
 		TEST_METHOD(TestMethod1)
 		{
 		}
+		*/
 	};
+	
 }
