@@ -1,2 +1,14 @@
-Doctor: Ilyas Yusuf - Department: heart - NUmber of Patient = 0
+Doctor: Ilyas Yusuf - Department: Surgery - Number of Patient = 0
 
+Patient: Gurjit Singh - 123456
+Patient Information: Radical
+
+Patient: Ilyas Yusfu - 123456789
+Patient Information: evil
+
+
+Patient: kobe bryant - 824
+Patient Information: supercool
+
+Patient: Austin Powers - 1966
+Patient Information: Groovey

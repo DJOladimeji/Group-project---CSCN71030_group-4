@@ -123,37 +123,5 @@ void PrintDoctorToFile(FILE* fp, DOCTOR d)
 {
 	fprintf(fp, "Doctor: %s ", d.firstname);
 	fprintf(fp, "%s - ", d.lastname);
-	<<<<<<< HEAD
-	fprintf(fp, "Department: %s - NUmber of Patient = %d\n\n", d.department, d.index); 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-PATIENT SearchForPatientInFile()
-{
-	//first search for patient;
-	//remove that line with the first name of the patient.
-	//and remove the line after
-	//then call <readDocfileFromDoctorFile> fucntion, to read a doctor, and create one
-	//then call <ReduceDoctorIndex> to reduce the index of the doctor
-	//then call <PrintDoctorBackToFile> to reprint the doctors information
-}
-
-DOCTOR ReduceDoctorIndex(DOCTOR d)
-{
-
-=======
 	fprintf(fp, "Department: %s - Number of Patient = %d\n\n", d.department, d.index); 
->>>>>>> ee6edc5616e65d4656d11563b6e46788c44a585a
 }

@@ -75,6 +75,7 @@ int main(int argc, char* argcv)
 			DOCTOR doc = { 0 };  
 			doc = initilizeDoctor(firstname, lastname,Departmentname); //fill doctor object with info
 			writeDoctor(doc, password,hospitalchoice); //write doctor object to file and write login info to login file
+			addUsertohospital(username, hospital, hospitalchoice); 
 
 			//CreateDoctorAfter()
 			
@@ -88,7 +89,8 @@ int main(int argc, char* argcv)
 			n= CheckUserName(username);  
 			p = CheckPassword(password); //still makes you remember
 			if (n == 1 && p==1) {
-				AfterLoginWindow(username,password,hospital,hospitalchoice); 
+				
+				AfterLoginWindow(hospital,username,password,hospitalchoice);
 			}
 			else
 			{
