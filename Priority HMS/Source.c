@@ -79,23 +79,11 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
         perror("Unable to open file\n");
         exit(1);
     }
-
     fprintf(fp3, "%s\n",allocatedpassword );   
-
-
     fclose(fp3);
-
-    //while not end of file{
-     //fscanf("%s %s, username,password) grab the username and password
-     //ilyasyusuf 123234234123
-    //}
     free(allocatedpassword);
     free(allocatedstring); 
 }
-
-
-
-//combine these two 
 //check login file for usernames
 int CheckUserName(char* username2) { 
     
@@ -211,7 +199,6 @@ int CheckPassword(char* password2) {
     fclose(fp);
     return 0;
 }
-
 
 void addPatient(PATIENT pat, char* filename) { 
     FILE* fp = fopen(filename, "a"); 

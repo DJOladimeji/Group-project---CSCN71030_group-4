@@ -12,7 +12,6 @@ bool Add_to_Hospital(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	bool IsAdded = false;   
 	Ishere = CheckforInsertion(docfilename, hospital);
 	if (Ishere) {
-		//put name into array
 		for (int i = 0; i < HOSPITALSIZE; i++) {
 			if (strcmp(hospital[i], "") == 0) {
 				strcpy(hospital[i], docfilename);
@@ -23,6 +22,7 @@ bool Add_to_Hospital(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	}
 	return IsAdded;
 }
+
 bool Delete_from_Hospital(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	bool Ishere = false;
 	bool IsDeleted = false;
@@ -34,6 +34,7 @@ bool Delete_from_Hospital(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	}
 	return IsDeleted;
 }
+
 bool CheckforInsertion(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	bool Ishere = true;
 	for (int i = 0; i < 10; i++) {
@@ -43,6 +44,7 @@ bool CheckforInsertion(char* docfilename, char* hospital[HOSPITALSIZE]) {
 	}
 	return Ishere;
 }
+
 bool CheckforDeletion(char* docfilename, char* hospital[HOSPITALSIZE], unsigned int* index) {
 	bool Ishere = false;
 	for (int i = 0; i < 10; i++) {
@@ -53,6 +55,7 @@ bool CheckforDeletion(char* docfilename, char* hospital[HOSPITALSIZE], unsigned 
 	}
 	return Ishere;
 }
+
 void Save_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
 	FILE* fp;
 	switch (hospitalchoice)
@@ -103,6 +106,7 @@ void Save_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoic
 		break;
 	}
 }
+
 void Read_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
 	FILE* fp;
 	switch (hospitalchoice)
@@ -157,26 +161,27 @@ void Read_Hospital_File(char* hospital[HOSPITALSIZE], unsigned int hospitalchoic
 		break;
 	}
 }
+
 bool addUsertohospital(char* username, char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
 	bool IsAdded = false;
 	char filename[MAXSTRINGLENGTH];
 	strcpy(filename, username);
 	strcat(filename, ".txt");
 	IsAdded = Add_to_Hospital(filename, hospital);
-	//call save hospital function.
 	Save_Hospital_File(hospital, hospitalchoice);
 	return IsAdded;
 }
+
 bool deleteUserfromhospital(char* username, char* hospital[HOSPITALSIZE], unsigned int hospitalchoice) {
 	bool IsDeleted = false;
 	char filename[MAXSTRINGLENGTH];
 	strcpy(filename, username);
 	strcat(filename, ".txt");
 	IsDeleted = Delete_from_Hospital(filename, hospital);
-	//call save hospital function.
 	Save_Hospital_File(hospital, hospitalchoice);
 	return IsDeleted;
 }
+
 char* getdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 
 	char* filename;
@@ -188,8 +193,8 @@ char* getdocfilefromhospital(char* username, char* hospital[HOSPITALSIZE]) {
 	}
 	return filename;
 }
-int HospitalPopulation(char* hospital[HOSPITALSIZE]) {
 
+int HospitalPopulation(char* hospital[HOSPITALSIZE]) {
 	unsigned int counter = 0;
 	for (int i = 0; i < HOSPITALSIZE; i++) {
 		if (*hospital[i] != 0) {
@@ -197,10 +202,10 @@ int HospitalPopulation(char* hospital[HOSPITALSIZE]) {
 				counter++;
 			}
 		}
-
 	}
 	return counter;
 }
+
 void switchhospital(char* username, char* Sourcehospital[HOSPITALSIZE], unsigned int Sourcehospitalchoice, char* Destinationhospital[HOSPITALSIZE],  unsigned int Destinationhospitalchoice) {
 	char filename[MAXSTRINGLENGTH];
 	unsigned int index=0; 
@@ -219,6 +224,5 @@ void switchhospital(char* username, char* Sourcehospital[HOSPITALSIZE], unsigned
 	else {
 		printf("File not found in source hospital\n"); 
 	}
-	
 }
 

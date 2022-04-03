@@ -10,145 +10,14 @@
 #include "Doctor.h"
 
 char* createpassword() {
-	// Open registry file
-	//FILE* fp = NULL;
-	//fopen_s(fp, "Login.txt", "r");
-	/*
-	// Search for username
-	char currLine[MAX_STR_LEN] = "";
-	bool usernameFound = false;
-	while (*currLine != EOF) {
-		fgets(currLine, MAX_STR_LEN, fp);
-		if (currLine == userName) {
-			usernameFound = true;
-			*currLine = EOF;
-		}
-	}
-
-	// Check availability
-	if (usernameFound) {
-		printf("Username already exists\n");
-		fclose(fp);
-		//return EXIT_FAILURE;
-	}
-	printf("Username available\n");
-	*/
-	// Close registry file
-	//fclose(fp);
-	
-	
-
-	// Create A doctor
-	// Create new doctor file (gurjit)
-
-	// Add doctor filename to hospital (ilyas)
-
-	// Generate password
 	char userPass[PASS_LEN+1] = "";
-	
-	//userPass[PASS_LEN - 1] = '\0';
-	/*
-	srand(time(0));
-	for (int i = 0; userPass[i] != '\0'; i++) {
-		userPass[i] = rand() % 26 + 'a';//this makes the password letters not numbers. It has to be changed.
-	}
-	*/
 	srand(time(0));
 	for (int i = 0; i <PASS_LEN; i++) {
 		userPass[i] = rand() % 26 + 'a';//this makes the password letters not numbers. It has to be changed.
 	}
-	/*
-	// Store username and password in registry file
-	fopen_s(fp, "Login.txt", "r");
-	char userInfo[MAX_STR_LEN] = "";
-	strcat_s(userInfo, MAX_STR_LEN, userName);
-	strcat_s(userInfo, MAX_STR_LEN, " ");
-	strcat_s(userInfo, MAX_STR_LEN, userPass);
-	strcat_s(userInfo, MAX_STR_LEN, "\n");
-	fputs(userInfo, fp);
-	fclose(fp);
-	*/ 
 	printf("%s is the password, write it down.\n", userPass);
-
-	//return EXIT_SUCCESS;
 	return userPass; 
 }
-/*
-int logIn(char* username, char* password, char* hospital[MAX_HOSP_SIZE]) { 
-	// Open registry file
-	FILE* fp = NULL;
-	fopen_s(fp, "registry.txt", "r");
-	
-	// Search for username
-	char currLine[MAX_STR_LEN] = "";
-	bool usernameFound = false;
-	char* foundUsername = NULL;
-	while (*currLine != EOF) {
-		fgets(currLine, MAX_STR_LEN, fp);
-		if (currLine == username) {
-			usernameFound = true;
-			foundUsername = username;
-			*currLine = EOF;
-		}
-	}
-
-	// Verify login
-	if (!usernameFound) {
-		printf("Username not found");
-		return EXIT_FAILURE;
-	}
-	if (username != foundUsername) {
-		printf("Incorrect password");
-		return EXIT_FAILURE;
-	}
-	printf("File found");
-
-	// Get information and hold on to it
-
-	// Close registry file
-	fclose(fp);
-
-	// Open doctor file
-	// Read from held information to doctor object (using gurjit's module)
-	// Close doctor file
-	/*
-	// Modification menu
-	bool menuOpen = true;
-	while (menuOpen = true) {
-		char userchoice = ' ';
-		printf("How do you want to proceed?\n");
-		printf("a. Modify object\n");	// placeholder: will call davids functions to modify the object
-		printf("q. Quit\n");			// then will call gurjit's module to save modification to doctor file
-		printf("\n >> ");
-		scanf_s(userchoice, "%c", sizeof(char));
-		printf("\n");
-
-		if (userchoice == 'a') {
-			// Modify object (david)
-		}
-		if (userchoice == 'q') {
-			menuOpen = false;
-		}
-
-	}
-	
-
-	// Open doctor file
-	// Write from object to doctor file
-	// Close doctor file
-	
-	// Open hospital file
-	fopen_s(fp, "registry.txt", "w");
-	// Modify doctor filename	// call ilyas' module & gurjit's module
-	// If User wants to delete account
-		// Delete doctor file
-		// Remove doctor file from hospital
-	// Close hospital file (done by ilyas' module automatically)
-	fclose(fp);
-	
-	return EXIT_SUCCESS;
-}
-*/
 void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* password,unsigned int hospitalchoice)  
 {
 	bool keepasking = true;
@@ -205,10 +74,6 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 
 		case 2:
 		{
-			//-------------------------------------------------------------------
-			//This is where code will go to call the function that will remove a patient 
-			//from the doctor file
-			//-------------------------------------------------------------------
 			RemovePatientFromFile(username);
 			DOCTOR Doctor_removePatinet;
 			Doctor_removePatinet = readDocfileFromDoctorFile(username);
@@ -221,10 +86,6 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 		case 3:
 		{
 			printf("3. Switch Hospitals\n\n");
-			//-------------------------------------------------------------------
-			//This is where code will go to call the function that will 'cut' the information from the 
-			//doctors current hospital fill and put it into the hospital file that they want
-			//-------------------------------------------------------------------
 			printf("choose hospital to move to\n");
 			int choice = 0;
 
@@ -306,11 +167,6 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 		case 4:
 		{
 			printf("4. Delete Account\n\n");
-			//-------------------------------------------------------------------
-			//This is where code will go to call the functions that will erase the doctor file 
-			//and will remove their information from the hospital files they are in and their login in 
-			//info from the login text file
-			//-------------------------------------------------------------------
 			unsigned int index = 0;
 			char filename[MAXCHARACTER];
 			strcpy(filename, username);
@@ -375,9 +231,7 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 bool deleteUserName(char* username, char* usernamefiles[30], unsigned int hospitalchoicearray[30]) {
 	bool IsDeleted = false;
 	char filename[MAXSTRINGLENGTH];
-
 	IsDeleted = Delete_from_Usernames(username, usernamefiles);
-	//call save hospital function.
 	Save_UserNames_File(usernamefiles, hospitalchoicearray);   
 	return IsDeleted;
 }
@@ -490,6 +344,7 @@ void Save_Password_File(char* passwordfiles[30]) {
 		fclose(fp);
 	}
 }
+
 void Read_Passwords_File(char* passwordfiles[30]) {
 	FILE* fp;
 	if ((fp = fopen("Passwords.txt", "r")) == NULL) {

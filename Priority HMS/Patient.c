@@ -23,7 +23,6 @@ PATIENT initializePateint()
 	scanf_s("%d", &patienthealthcardnumber);
 
 	printf("health infromation: ");
-	//scanf_s(" %s", patienthealthinfo, MAXAMOUNTOFPATIENTINFO);
 	createPatientInfo(patienthealthinfo);  
 
 	PATIENT pat; 

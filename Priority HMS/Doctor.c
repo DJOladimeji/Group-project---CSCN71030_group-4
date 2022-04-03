@@ -11,43 +11,15 @@
 #define MAXWORDS 500
 
 DOCTOR initilizeDoctor(char Firstname[], char Lastname[], char Department[])
-{	/*
-	char firstname[MAXCHARACTER];
-	char lastname[MAXCHARACTER];
-	char department[MAXCHARACTER];
-	
-	printf("please input first name: ");
-	scanf_s("%s", firstname, MAXCHARACTER);
-
-	printf("please input last name: ");
-	scanf_s("%s", lastname, MAXCHARACTER);
-
-	printf("please input department: ");
-	scanf_s("%s", department, MAXCHARACTER);
-	*/
+{	
 	DOCTOR doc;
-	//doc = CreateDoctor(&Firstname, &Lastname, &Department); 
 	strncpy_s(doc.firstname, MAXCHARACTER, Firstname, MAXCHARACTER);
 	strncpy_s(doc.lastname, MAXCHARACTER, Lastname, MAXCHARACTER);
 	strncpy_s(doc.department, MAXCHARACTER, Department, MAXCHARACTER);
-
 	doc.index = 0; 
 	return doc;
 }
-/*
-DOCTOR CreateDoctor(char* Firstname[], char* Lastname[], char* Department[])
-{
-	DOCTOR d;
 
-	strncpy_s(d.firstname, MAXCHARACTER, Firstname, MAXCHARACTER);   
-	strncpy_s(d.lastname, MAXCHARACTER, Lastname, MAXCHARACTER);
-	strncpy_s(d.department, MAXCHARACTER, Department, MAXCHARACTER); 
-
-	d.index = 0;
-
-	return d; 
-}
-*/
 DOCTOR CreateDoctorAfter(char* Firstname[], char* Lastname[], char* Department[], int index)
 {
 	DOCTOR d;
@@ -74,14 +46,11 @@ DOCTOR addPatienttoDoctor(DOCTOR d, PATIENT pat, char* username)
 {
 	d.patient[d.index] = &pat;;
 	d.index = d.index + 1;
-	printf("\n\nnumber of patient the doctor now ha is: %d\n\n", d.index);
+	printf("\n\nNumber of patient the doctor now has is: %d\n\n", d.index);
 	char filename[MAXCHARACTER];
 	strcpy(filename, username);
 	strcat(filename, ".txt"); 
-	//printf("The number of patients the doctor now has is: %d\n", d.index);
-
 	addPatient(pat, filename); 
-
 	return d;
 }
 
@@ -129,7 +98,6 @@ void PrintDoctorToFile(FILE* fp, DOCTOR d)
 	fprintf(fp, "Department: %s - Number of Patient = %d\n\n", d.department, d.index); 
 }
 
-//somthing is wrong here
 void printDoctorBackToFile(DOCTOR d, char* username)
 {
 	FILE* fp, * fptemp;
@@ -190,7 +158,6 @@ DOCTOR ReduceDoctorIndex(DOCTOR d)
 	return d;
 }
 
-//almost done please do not touch this function <<<<<<<<<<<<<<<<<<<<<<<<<<<
 void RemovePatientFromFile(char* username)
 {
 	
@@ -312,6 +279,5 @@ void printDoctorFile(char* username)
 		putc(ch, stdout);
 		count++;
 	}
-
 	fclose(fp);
 }

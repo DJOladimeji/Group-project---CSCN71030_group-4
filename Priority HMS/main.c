@@ -18,14 +18,12 @@
 int main(int argc, char* argcv)
 {
 	bool ok = true;
-	//HELLO FIRST NAME LAST NAME WHAT DO YOU WANT TO DO?
 	while(ok)
 	{
 		//PICK USERNAME
 		printf("1. Sign up\n");
 		printf("2. Log in\n");
 		printf("3. Exit\n");
-
 		printf("what do you want to do: ");
 		int userschoice;
 		scanf_s("%d", &userschoice);
@@ -50,9 +48,6 @@ int main(int argc, char* argcv)
 		{
 		case 1://SIGNUP
 		{
-			//------------------------------------------------------------------  
-			//This will be the spot where you add where the function(s) go to sign up a doctor
-			//------------------------------------------------------------------
 			printf("Enter First Name\n");
 			if (scanf("%s", firstname) != 1) {
 				break;
@@ -73,21 +68,17 @@ int main(int argc, char* argcv)
 			}
 			strcpy(password, createpassword(username, hospital)); 
 			DOCTOR doc = { 0 };  
-			doc = initilizeDoctor(firstname, lastname,Departmentname); //fill doctor object with info
-			writeDoctor(doc, password,hospitalchoice); //write doctor object to file and write login info to login file
+			doc = initilizeDoctor(firstname, lastname,Departmentname); 
+			writeDoctor(doc, password,hospitalchoice); 
 			addUsertohospital(username, hospital, hospitalchoice); 
-
-			//CreateDoctorAfter()
-			
 			break;
 		}
-
 		case 2://LOGIN
 		{
 			int n = 0;
 			int p = 0;
 			n= CheckUserName(username);  
-			p = CheckPassword(password); //still makes you remember
+			p = CheckPassword(password); 
 			if (n == 1 && p==1) {
 				
 				AfterLoginWindow(hospital,username,password,hospitalchoice);
@@ -98,12 +89,7 @@ int main(int argc, char* argcv)
 				printf("Failed Login!\n\n"); 
 				break;
 			}
-			//---------------------------------------------------------------
-			//This is where code will go to get the users password and see if it is correct before continuing
-			//---------------------------------------------------------------
-
 		}
-
 		case 3://QUIT
 		{
 			printf("Thank you\n");
@@ -113,7 +99,6 @@ int main(int argc, char* argcv)
 			}
 			break;
 		}
-
 		default:
 		{
 			printf("Wrong input\n");
@@ -124,11 +109,8 @@ int main(int argc, char* argcv)
 			break;
 		}
 		}
-
 	}
-
 	printf("\n"); 
-	
 	return 0;
 }
 
