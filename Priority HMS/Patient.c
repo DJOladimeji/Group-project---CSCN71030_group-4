@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "Patient.h"
+#include "Source.h"
 
 #define MAXCHARACTER 50
 #define MAXAMOUNTOFPATIENTINFO 1000
@@ -22,10 +23,11 @@ PATIENT initializePateint()
 	scanf_s("%d", &patienthealthcardnumber);
 
 	printf("health infromation: ");
-	scanf_s("%s", patienthealthinfo, MAXAMOUNTOFPATIENTINFO);
+	//scanf_s(" %s", patienthealthinfo, MAXAMOUNTOFPATIENTINFO);
+	createPatientInfo(patienthealthinfo);  
 
-	PATIENT pat;
-	pat = CreatePatient(&patientfirstname, &patientlastname, patienthealthcardnumber, &patienthealthinfo);
+	PATIENT pat; 
+	pat = CreatePatient(&patientfirstname, &patientlastname, patienthealthcardnumber, &patienthealthinfo); 
 
 	return pat;
 }

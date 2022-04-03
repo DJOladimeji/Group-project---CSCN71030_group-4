@@ -155,8 +155,6 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 	char tempName =0;
 	while (ok)
 	{
-		//allocate memroy to array for username textfile
-		//allocate memory to array for password textfile
 		char** usernamefiles = 0;
 		char** passwordfiles = 0;
 		char** destinationhospital = 0; 
@@ -183,10 +181,9 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 		}
 		printf("1. Add a patient\n");
 		printf("2. Remove a Patient\n"); 
-		printf("3. Edit Patient Information\n"); 
-		printf("4. Delete Account\n"); 
-		printf("5. Switch Hospitals\n");
-		printf("6. Logout\n"); 
+		printf("3. Delete Account\n"); 
+		printf("4. Switch Hospitals\n");
+		printf("5. Logout\n\n"); 
 
 		printf("what do you want to do: "); 
 		int userschoice;  
@@ -196,7 +193,7 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 		{
 		case 1:
 		{
-			printf("1. Add a patient\n");
+			printf("1. Add a patient\n\n");
 			PATIENT info;
 			info = initializePateint();
 			DOCTOR doctor;
@@ -217,30 +214,21 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			Doctor_removePatinet = readDocfileFromDoctorFile(username);
 			Doctor_removePatinet = ReduceDoctorIndex(Doctor_removePatinet);  
 			printDoctorBackToFile(Doctor_removePatinet, username);
-			printf("2. Remove a Patient\n");
+			printf("2. Remove a Patient\n\n");
 			break;
 		}
-
 		case 3:
 		{
-			printf("3. Edit Patient Information\n");
-			//-------------------------------------------------------------------
-			//This is where code will go to call the function that will append the doctor's 
-			//file to edit the patient information
-			//-------------------------------------------------------------------
-			break;
-		}
-
-		case 4:
-		{
-			printf("4. Delete Account\n");
+			printf("3. Delete Account\n\n");
 			//-------------------------------------------------------------------
 			//This is where code will go to call the functions that will erase the doctor file 
 			//and will remove their information from the hospital files they are in and their login in 
 			//info from the login text file
 			//-------------------------------------------------------------------
 			unsigned int index = 0;
-
+			char filename[MAXCHARACTER];
+			strcpy(filename, username); 
+			strcat(filename, ".txt"); 
 			Read_Hospital_File(hospital, hospitalchoice);
 			Read_UserNames_File(usernamefiles, hospitalchoicearray);
 			for (int i = 0; i < 30; i++) {
@@ -254,14 +242,16 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			deleteUserName(username, usernamefiles, hospitalchoicearray);
 			deletePasswords(password, passwordfiles);
 			deleteUserfromhospital(username, hospital, hospitalchoice);
-			free(usernamefiles);
+			remove(filename); 
+			free(usernamefiles);  
 			free(passwordfiles);
+			printf("Account Deleted\n\n");
 			break;
 		}
 
-		case 5:
+		case 4:
 		{
-			printf("5. Switch Hospitals\n");
+			printf("4. Switch Hospitals\n\n");
 			//-------------------------------------------------------------------
 			//This is where code will go to call the function that will 'cut' the information from the 
 			//doctors current hospital fill and put it into the hospital file that they want
@@ -344,9 +334,9 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 
 			}
 		}
-		case 6:
+		case 5:
 		{
-			printf("6. Logout\n");
+			printf("5. Logout\n\n");
 			ok = false;
 			if (usernamefiles) {
 				free(usernamefiles);

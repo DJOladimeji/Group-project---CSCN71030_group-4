@@ -148,7 +148,7 @@ int CheckUserName(char* username2) {
         ++line;
     }
 
-    printf("Username is incorrect\n");
+    printf("Username is incorrect\n\n");
 
     fclose(fp); 
     return 0; 
@@ -206,7 +206,7 @@ int CheckPassword(char* password2) {
         ++line;
     }
 
-    printf("Password is incorrect\n");
+    printf("Password is incorrect\n\n");
 
     fclose(fp);
     return 0;
@@ -222,11 +222,19 @@ void addPatient(PATIENT pat, char* filename) {
     fclose(fp); 
 }
 
-void createstring(char* string)
+void createPatientInfo(char* string)
 {
-    char input[MAXCHARACTER];
-    if (fgets(input, MAXCHARACTER, stdin) != NULL) { 
-        input[strlen(input) - 1] = '\0';
-        strcpy(string, input); 
-    }
+    char input[MAXAMOUNTOFPATIENTINFO] = {0};
+        if (fgets(input, MAXAMOUNTOFPATIENTINFO, stdin) != NULL) {
+            input[strlen(input) - 1] = '\0';
+            strcpy(string, input);
+            if (strcmp(input ,"\0")==0) {
+                if (fgets(input, MAXAMOUNTOFPATIENTINFO, stdin) != NULL) {
+                    input[strlen(input) - 1] = '\0';
+                    
+                    strcpy(string, input);
+                }
+            }
+        }
+    
 }

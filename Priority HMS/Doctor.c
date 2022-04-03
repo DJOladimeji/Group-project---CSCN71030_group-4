@@ -194,9 +194,9 @@ DOCTOR ReduceDoctorIndex(DOCTOR d)
 void RemovePatientFromFile(char* username)
 {
 	
-	char wrd[MAXCHARACTER], buffer[MAXCHARACTER];
+	char wrd[MAXCHARACTER], buffer[MAXAMOUNTOFPATIENTINFO];
 	int n, m, i, j, line;
-	int erase;
+	int erase =0;
 
 	char filename[MAXCHARACTER];
 	strcpy(filename, username);
@@ -212,7 +212,7 @@ void RemovePatientFromFile(char* username)
 
 	line = 0;
 
-	while (fgets(buffer, MAXCHARACTER, fp) != NULL)
+	while (fgets(buffer, MAXAMOUNTOFPATIENTINFO, fp) != NULL)
 	{
 		i = 0;
 		n = strlen(buffer);
@@ -247,7 +247,7 @@ void RemovePatientFromFile(char* username)
 	FILE* fp2, * fptemp;
 	char ch[MAXWORDS]; 
 	char newCh[MAXWORDS] = "";
-	int update = erase;
+	int update = erase+1;
 	int update2 = update + 1;
 	char tempfile[MAXWORDS];
 
