@@ -21,7 +21,8 @@ int main(int argc, char* argcv)
 	while(ok)
 	{
 		//PICK USERNAME
-		printf("1. Sign up\n");
+		printf("***WELCOME TO PRIORITY HMS***\n");   
+		printf("1. Sign up\n"); 
 		printf("2. Log in\n");
 		printf("3. Exit\n");
 		printf("what do you want to do: ");
@@ -48,7 +49,8 @@ int main(int argc, char* argcv)
 		{
 		case 1://SIGNUP
 		{
-			printf("Enter First Name\n");
+			printf("Sign up Selected\n"); 
+			printf("Enter First Name\n"); 
 			if (scanf("%s", firstname) != 1) {
 				break;
 			}
@@ -63,8 +65,11 @@ int main(int argc, char* argcv)
 			strcat(username, firstname); 
 			strcat(username, lastname); 
 			printf("Choose Hospital(1,2,3)\n"); 
-			if (scanf("%i", &hospitalchoice) != 1) {
-				break;
+			if (scanf("%i", &hospitalchoice) == 1) {
+				if (hospitalchoice < 1 | hospitalchoice>3) {
+					printf("Not a valid choice\n\n"); 
+					break;
+				}
 			}
 			strcpy(password, createpassword(username, hospital)); 
 			DOCTOR doc = { 0 };  
@@ -75,20 +80,21 @@ int main(int argc, char* argcv)
 		}
 		case 2://LOGIN
 		{
+			printf("Log in Selected\n"); 
 			int n = 0;
 			int p = 0;
 			//ask them to input
 			char searchname[MAXCHARACTER] = { 0 }; 
-			printf("\nEnter username EXACTLY!:\n"); 
+			printf("\nEnter Username:\n"); 
 			scanf_s("%s", searchname, NAMELENGTH); 
 			char searchpassword[MAXCHARACTER] = { 0 }; 
-			printf("\nEnter password EXACTLY!:\n");
+			printf("\nEnter Password:\n");
 			scanf_s("%s", searchpassword, NAMELENGTH); 
 			n= CheckUserName(username,searchname);    
 			p = CheckPassword(password, searchpassword);   
 			if (n == 1 && p==1) {
-				
-				AfterLoginWindow(hospital,username,password,hospitalchoice);
+				printf("Welcome!\n\n"); 
+				AfterLoginWindow(hospital,username,password,hospitalchoice); 
 				break; 
 			}
 			else

@@ -118,7 +118,7 @@ int CheckUserName(char* username2, char* searchname) {
 
             if ((i == n || buffer[i] == ' ' || buffer[i] == '\n') && j == m)
             {
-                printf("Username is correct\n\n"); 
+                printf("Username is correct\n"); 
                 strcpy(username2,searchname);  
                 fclose(fp); 
                 return 1;

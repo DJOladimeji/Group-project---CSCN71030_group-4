@@ -108,9 +108,8 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 				}
 			}
 			scanf("%d", &choice);
-			switch (choice)
-			{
-			case(HOSPITAL1):
+			
+			if (choice == HOSPITAL1)
 			{
 				Read_Hospital_File(destinationhospital, HOSPITAL1);
 				Read_Hospital_File(hospital, hospitalchoice);
@@ -125,7 +124,8 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 				}
 				Save_UserNames_File(usernamefiles, hospitalchoicearray);
 				break;
-			case(HOSPITAL2):
+			}
+			else if (choice ==HOSPITAL2)
 			{
 				Read_Hospital_File(destinationhospital, HOSPITAL2);
 				Read_Hospital_File(hospital, hospitalchoice);
@@ -141,11 +141,11 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 				Save_UserNames_File(usernamefiles, hospitalchoicearray);
 				break;
 			}
-			case(HOSPITAL3):
+			else if (choice ==HOSPITAL3) 
 			{
-				Read_Hospital_File(destinationhospital, HOSPITAL3);
-				Read_Hospital_File(hospital, hospitalchoice);
-				switchhospital(username, hospital, hospitalchoice, destinationhospital, HOSPITAL3);
+				Read_Hospital_File(destinationhospital, HOSPITAL3); 
+				Read_Hospital_File(hospital, hospitalchoice); 
+				switchhospital(username, hospital, hospitalchoice, destinationhospital, HOSPITAL3); 
 				for (int i = 0; i < 30; i++) {
 					if (usernamefiles[i]) {
 						if (strcmp(username, usernamefiles[i]) == 0) {
@@ -157,11 +157,10 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 				Save_UserNames_File(usernamefiles, hospitalchoicearray);
 				break;
 			}
-			default:
+			else
+			{
 				printf("not a valid choice!\n");
 				break;
-			}
-
 			}
 		}
 		case 4:
