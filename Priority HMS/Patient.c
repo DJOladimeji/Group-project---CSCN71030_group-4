@@ -53,6 +53,6 @@ void PrintPatient(PATIENT p)
 
 void PrintPatientToFile(FILE* fp, PATIENT p)
 {
-	fprintf(fp, "Patient: %s %s - %d\n", p.firstname, p.lastname, p.healthcardnumber);
-	fprintf(fp, "Patient Information: %s\n", p.patientinfo);
+	fprintf(fp, "Patient: %s %s - %d (", p.firstname, p.lastname, p.healthcardnumber);
+	fprintf(fp, "Patient Information: %s)\n", p.patientinfo);
 }

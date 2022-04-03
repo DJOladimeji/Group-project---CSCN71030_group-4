@@ -228,6 +228,7 @@ void RemovePatientFromFile(char* username)
 			if ((i == n || buffer[i] == ' ' || buffer[i] == '\n') && j == m)
 			{
 				printf("%s", buffer);
+				printf("\n\nline = %d\n\n");
 				erase = line;
 			}
 
@@ -246,7 +247,7 @@ void RemovePatientFromFile(char* username)
 	FILE* fp2, * fptemp;
 	char ch[MAXWORDS]; 
 	char newCh[MAXWORDS] = "";
-	int update = erase + 1;
+	int update = erase;
 	int update2 = update + 1;
 	char tempfile[MAXWORDS];
 
@@ -263,6 +264,8 @@ void RemovePatientFromFile(char* username)
 	bool keep_reading = true;
 	int current_line = 1;
 
+	printf("\n\nupdate  = %d\n\n", update);
+
 	do
 	{
 		fgets(ch, MAXWORDS, fp2);
@@ -270,7 +273,7 @@ void RemovePatientFromFile(char* username)
 		{
 			keep_reading = false;
 		}
-		else if (current_line != update && current_line != update2)
+		else if (current_line != update)
 		{
 			fputs(ch, fptemp);
 		}
