@@ -12,6 +12,6 @@
 
 void writeDoctor(DOCTOR, char*, unsigned int );
 int CheckUserName(char*,char*);   
-int CheckPassword(char*);
+int CheckPassword(char*, char*); 
 void addPatient(PATIENT, char*); 
 void createPatientInfo(char*);

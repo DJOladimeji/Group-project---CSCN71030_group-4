@@ -26,11 +26,9 @@ namespace integrationtests
 			strncpy_s(doc.department, MAXCHARACTER, "Surgery", MAXCHARACTER);
 			doc.index = 0;
 			unsigned int hpchoice = HOSPITAL1;
-			char password[MAXCHARACTER] = { "abcdefg" }; //call craete passwordfunction 
+			char password[MAXCHARACTER] = { "abcdefg" };
 			char expected[1000] = "Doctor: Gurjit Singh - Department: Surgery - Number of Patient = 0\n";
-
 			char c[1000];
-
 			writeDoctor(doc,password,hpchoice);  
 
 			FILE* fp;
@@ -41,36 +39,6 @@ namespace integrationtests
 
 			Assert::AreEqual(expected,c);  
 		}
-		
-		/*
-		TEST_METHOD(readingFromPatientFile)
-		{
-			PATIENT pat;
-			strncpy_s(pat.firstname, MAXCHARACTER, "John", MAXCHARACTER);
-			strncpy_s(pat.lastname, MAXCHARACTER, "Smith", MAXCHARACTER);
-			pat.healthcardnumber = 123456;
-			strncpy_s(pat.patientinfo, MAXCHARACTER, "Vin Diesel", MAXCHARACTER);
-
-			char expected[MAXAMOUNTOFPATIENTINFO] = "John Smith - 123456";
-
-			char c[MAXAMOUNTOFPATIENTINFO];
-			
-			addPatient(pat);
-
-			FILE* fp;
-			fopen_s(&fp, "DavidOladimeji.txt", "r");
-			if (fp == NULL)
-			{
-				printf("Cannot open file\n");
-			}
-
-			fgets(c, MAXAMOUNTOFPATIENTINFO, fp);
-
-			fclose(fp);
-
-			Assert::AreEqual(expected, c);
-		}
-		*/
 	};
 	
 	TEST_CLASS(Hospital)
@@ -267,40 +235,19 @@ namespace integrationtests
 			Assert::AreEqual(filename, result);
 
 		}
-
-		// test for logging in
-		/*
-		TEST_METHOD(AfterLoginChoice1Test)  //testing user choice 1: Adding Patient;
-		{
-			
-			char username[MAXSTRINGLENGTH] = { "IlyasYusuf" };
-			char filename[MAXSTRINGLENGTH] = { "IlyasYusuf.txt" };
-			//char* fp = filename;
-			char result[MAXCHARACTER] = {0}; 
-			unsigned int choice = HOSPITAL1; 
-			PATIENT patient1;
-			patient1 = { "Kobe","Bryant",2408, "Feeling sad" }; 
-			DOCTOR doc1,doc2; 
-			strncpy_s(doc1.firstname, MAXCHARACTER, "Ilyas", MAXCHARACTER);
-			strncpy_s(doc1.lastname, MAXCHARACTER, "Yusuf", MAXCHARACTER);
-			strncpy_s(doc1.department, MAXCHARACTER, "Surgery", MAXCHARACTER);
-			doc1.index = 0; 
-			doc2 = doc1; 
-			doc2.patient[1] = &patient1;  
-			doc2.index = 1;  
-			doc1 = addPatienttoDoctor(doc1, patient1, username);   
-			Assert::AreEqual(doc2, doc1); 
-		
-
-		}
-		*/
 		TEST_METHOD(CheckUserNameTest)
 		{ 
-			char username[MAXSTRINGLENGTH] = { "IlyasYusuf" };
-			char* searchname;
-			int result = CheckUserName(username, searchname);  
+			char username[MAXSTRINGLENGTH] = { "GurjitSingh" };
+			char searchname[MAXSTRINGLENGTH] = { "GurjitSingh" };
+			int result = CheckUserName(username, searchname);    
 			Assert::AreEqual(1, result); 
-
+		}
+		TEST_METHOD(CheckPasswordTest)
+		{
+			char password[MAXSTRINGLENGTH] = { "abdcdefg"};
+			char searchpassword[MAXSTRINGLENGTH] = { "abcdefg" }; 
+			int result = CheckPassword(password, searchpassword);     
+			Assert::AreEqual(1, result);
 		}
 		TEST_METHOD(PasswordGeneratorTest)  
 		{

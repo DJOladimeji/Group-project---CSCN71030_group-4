@@ -85,19 +85,20 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
     free(allocatedstring); 
 }
 //check login file for usernames
-int CheckUserName(char* username2, char* username) {  
+int CheckUserName(char* username2, char* searchname) {   
     
-    char username[NAMELENGTH], buffer[NAMELENGTH];
+    char buffer[NAMELENGTH];
     int n, m, i, j, line; 
 
-    FILE* fp = fopen("UserNames.txt", "r");
-
+    FILE* fp;
+    fopen_s(&fp,"UserNames.txt", "r"); 
+    
     if (fp == NULL) {
         perror("Unable to open file\n"); 
         exit(1); 
     } 
 
-    m = strlen(username); 
+    m = strlen(searchname); 
     line = 0; 
 
     printf("\n"); 
@@ -110,7 +111,7 @@ int CheckUserName(char* username2, char* username) {
         while (i < n)
         {
             j = 0;
-            while (i < n && j < m && buffer[i] == username[j])
+            while (i < n && j < m && buffer[i] == searchname[j])
             {
                 ++i, ++j;
             }
@@ -118,7 +119,7 @@ int CheckUserName(char* username2, char* username) {
             if ((i == n || buffer[i] == ' ' || buffer[i] == '\n') && j == m)
             {
                 printf("Username is correct\n\n"); 
-                strcpy(username2,username);  
+                strcpy(username2,searchname);  
                 fclose(fp); 
                 return 1;
             }  
@@ -138,29 +139,25 @@ int CheckUserName(char* username2, char* username) {
     return 0; 
 }
 //check password file for password
-int CheckPassword(char* password2) {
+int CheckPassword(char* password2, char* searchname) { 
 
 
-    char password[NAMELENGTH], buffer[NAMELENGTH];
+    char buffer[NAMELENGTH];
     int n, m, i, j, line;
 
-    FILE* fp = fopen("Passwords.txt", "r");
+    FILE* fpx = fopen("Passwords.txt", "r");
 
-    if (fp == NULL) {
+    if (fpx == NULL) {
         perror("Unable to open file\n");
         exit(1);
     }
 
-    printf("\nEnter password:\n");
-    scanf_s("%s", password, NAMELENGTH);
-
-
-    m = strlen(password);
+    m = strlen(searchname);
     line = 0;
 
     printf("\n");
 
-    while (fgets(buffer, NAMELENGTH, fp) != NULL)
+    while (fgets(buffer, NAMELENGTH, fpx) != NULL)
     {
         i = 0;
         n = strlen(buffer);
@@ -168,7 +165,7 @@ int CheckPassword(char* password2) {
         while (i < n)
         {
             j = 0;
-            while (i < n && j < m && buffer[i] == password[j])
+            while (i < n && j < m && buffer[i] == searchname[j])
             {
                 ++i, ++j;
             }
@@ -176,8 +173,8 @@ int CheckPassword(char* password2) {
             if ((i == n || buffer[i] == ' ' || buffer[i] == '\n') && j == m)
             {
                 printf("Password is correct\n\n");
-                strcpy(password2, password); 
-                fclose(fp);
+                strcpy(password2, searchname); 
+                fclose(fpx); 
                 return 1;
             }
 
@@ -192,7 +189,7 @@ int CheckPassword(char* password2) {
 
     printf("Password is incorrect\n\n");
 
-    fclose(fp);
+    fclose(fpx); 
     return 0;
 }
 

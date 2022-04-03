@@ -1,6 +1,0 @@
-Doctor: David Oladimeji - Department: Clinic - Number of Patient = 1
-
-
-
-
-Patient: Adam Young - 246895 (Patient Information: Cancer)

@@ -82,7 +82,7 @@ int main(int argc, char* argcv)
 			printf("\nEnter username:\n"); 
 			scanf_s("%s", searchname, NAMELENGTH); 
 			n= CheckUserName(username,searchname);    
-			p = CheckPassword(password); 
+			p = CheckPassword(password, searchname);  
 			if (n == 1 && p==1) {
 				
 				AfterLoginWindow(hospital,username,password,hospitalchoice);
