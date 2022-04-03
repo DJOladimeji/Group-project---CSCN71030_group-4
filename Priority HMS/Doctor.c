@@ -1,12 +1,14 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
+#include <stdbool.h>
 #include "Doctor.h"
 #include "Patient.h"
 #include "Source.h"
 #include <string.h>
 
 #define MAXCHARACTER 50
+#define MAXWORDS 500
 
 DOCTOR initilizeDoctor(char Firstname[], char Lastname[], char Department[])
 {	/*
@@ -71,7 +73,8 @@ void PrintDoctor(DOCTOR d)
 DOCTOR addPatienttoDoctor(DOCTOR d, PATIENT pat, char* username)
 {
 	d.patient[d.index] = &pat;;
-	d.index++;
+	d.index = d.index + 1;
+	printf("\n\nnumber of patient the doctor now ha is: %d\n\n", d.index);
 	char filename[MAXCHARACTER];
 	strcpy(filename, username);
 	strcat(filename, ".txt"); 
@@ -124,4 +127,161 @@ void PrintDoctorToFile(FILE* fp, DOCTOR d)
 	fprintf(fp, "Doctor: %s ", d.firstname);
 	fprintf(fp, "%s - ", d.lastname);
 	fprintf(fp, "Department: %s - Number of Patient = %d\n\n", d.department, d.index); 
+}
+
+//somthing is wrong here
+void printDoctorBackToFile(DOCTOR d, char* username)
+{
+	FILE* fp, * fptemp;
+	char ch[MAXWORDS];
+	int update = 1;
+	char tempfile[MAXWORDS];
+
+	char filename[MAXWORDS];
+	strcpy(filename, username);
+	strcat(filename, ".txt");
+
+	strcpy(tempfile, "temp____");
+	strcat(tempfile, filename);
+
+	fp = fopen(filename, "r");
+	fptemp = fopen(tempfile, "w");
+
+	bool keep_reading = true; 
+	int current_line = 1;
+
+	printf("\n\n*****************************************\n");
+	printf("%s %s,  - %s: %d\n", d.firstname, d.lastname, d.department, d.index);
+	printf("*****************************************\n\n\n"); 
+
+	do
+	{
+		fgets(ch, MAXWORDS, fp);
+		if (feof(fp))
+		{
+			keep_reading = false;
+		}
+		else if (current_line != update)
+		{
+			fputs(ch, fptemp);
+		}
+		else if (current_line == update)
+		{
+			fprintf(fptemp, "Doctor: %s ", d.firstname);
+			fprintf(fptemp, "%s - ", d.lastname);
+			fprintf(fptemp, "Department: %s - Number of Patient = %d\n\n", d.department, d.index);
+		}
+		current_line++;
+	} while (keep_reading);
+
+	printf("\nTask updated\n");
+
+	fclose(fp);
+	fclose(fptemp);
+
+	remove(filename);
+	rename(tempfile, filename);
+}
+
+DOCTOR ReduceDoctorIndex(DOCTOR d)
+{
+	d.index = d.index = 1;
+	
+	return d;
+}
+
+//almost done please do not touch this function <<<<<<<<<<<<<<<<<<<<<<<<<<<
+void RemovePatientFromFile(char* username)
+{
+	
+	char wrd[MAXCHARACTER], buffer[MAXCHARACTER];
+	int n, m, i, j, line;
+	int erase;
+
+	char filename[MAXCHARACTER];
+	strcpy(filename, username);
+	strcat(filename, ".txt");
+
+	FILE* fp;
+	fp = fopen(filename, "r");
+
+	printf("Enter the first name of the patient you are looking for: ");
+	scanf("%s", wrd, MAXCHARACTER);
+
+	m = strlen(wrd);
+
+	line = 0;
+
+	while (fgets(buffer, MAXCHARACTER, fp) != NULL)
+	{
+		i = 0;
+		n = strlen(buffer);
+
+		while (i < n)
+		{
+			j = 0;
+			while (i < n && j < m && buffer[i] == wrd[j])
+			{
+				++i, ++j;
+			}
+
+			if ((i == n || buffer[i] == ' ' || buffer[i] == '\n') && j == m)
+			{
+				printf("%s", buffer);
+				erase = line;
+			}
+
+			while (i < n && buffer[i] != ' ')
+			{
+				++i;
+			}
+			++i;
+		}
+
+		++line;
+	}
+
+	fclose(fp);
+
+	FILE* fp2, * fptemp;
+	char ch[MAXWORDS]; 
+	char newCh[MAXWORDS] = "";
+	int update = erase + 1;
+	int update2 = update + 1;
+	char tempfile[MAXWORDS];
+
+	strcpy(tempfile, "temp____");
+	strcat(tempfile, filename);
+
+	fp2 = fopen(filename, "r");
+	fptemp = fopen(tempfile, "w");
+
+	printf("\nEnter the new information for the task:\n");
+	fgets(newCh, sizeof(newCh), stdin);
+	fgets(newCh, sizeof(newCh), stdin);
+
+	bool keep_reading = true;
+	int current_line = 1;
+
+	do
+	{
+		fgets(ch, MAXWORDS, fp2);
+		if (feof(fp2))
+		{
+			keep_reading = false;
+		}
+		else if (current_line != update && current_line != update2)
+		{
+			fputs(ch, fptemp);
+		}
+		current_line++;
+	} while (keep_reading);
+
+	printf("\nTask updated\n");
+
+	fclose(fp2);
+	fclose(fptemp);
+
+	remove(filename);
+	rename(tempfile, "Tasks.txt");
 }

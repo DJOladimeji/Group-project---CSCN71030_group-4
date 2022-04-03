@@ -22,3 +22,6 @@ DOCTOR addPatienttoDoctor(DOCTOR, PATIENT, char*);
 void PrintDoctor(DOCTOR);
 DOCTOR readDocfileFromDoctorFile(char*);
 void PrintDoctorToFile(FILE*, DOCTOR);
+void RemovePatientFromFile(char*); 
+void printDoctorBackToFile(DOCTOR, char*);
+DOCTOR ReduceDoctorIndex(DOCTOR);

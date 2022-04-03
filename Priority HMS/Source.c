@@ -99,7 +99,6 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
 //check login file for usernames
 int CheckUserName(char* username2) { 
     
-
     char username[NAMELENGTH], buffer[NAMELENGTH];
     int n, m, i, j, line; 
 

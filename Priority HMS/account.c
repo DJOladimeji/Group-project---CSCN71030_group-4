@@ -7,6 +7,8 @@
 
 #include "account.h"
 #include "VS2022GHospitalModule.h"
+#include "Doctor.h"
+
 char* createpassword() {
 	// Open registry file
 	//FILE* fp = NULL;
@@ -199,17 +201,23 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			info = initializePateint();
 			DOCTOR doctor;
 			doctor = readDocfileFromDoctorFile(username); 
-			addPatienttoDoctor(doctor, info, username); 
+			doctor = addPatienttoDoctor(doctor, info, username); 
+			printDoctorBackToFile(doctor, username);
 			break;
 		}
 
 		case 2:
 		{
-			printf("2. Remove a Patient\n");
 			//-------------------------------------------------------------------
 			//This is where code will go to call the function that will remove a patient 
 			//from the doctor file
 			//-------------------------------------------------------------------
+			RemovePatientFromFile(username);
+			DOCTOR Doctor_removePatinet;
+			Doctor_removePatinet = readDocfileFromDoctorFile(username);
+			Doctor_removePatinet = ReduceDoctorIndex(Doctor_removePatinet);  
+			printDoctorBackToFile(Doctor_removePatinet, username);
+			printf("2. Remove a Patient\n");
 			break;
 		}
 
