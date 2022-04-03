@@ -81,10 +81,9 @@ DOCTOR readDocfileFromDoctorFile(char* username, int* count) {
 		printf("Cannot open file\n");
 		//exit(1); 
 	}
-
-	fscanf(fp, "%s %s %s %s %s %s %s %s %s %s %s %d", a1, fname, lname, a2, a3, depart, a3, a4, a5, a6, a7, &ind);
-
-	fclose(fp);
+	
+	fscanf(fp, "%s %s %s %s %s %s %s %s %s %s %s %d", a1, fname, lname, a2, a3, depart, a3, a4, a5, a6, a7, &ind);  
+	fclose(fp); 
 	 
 	doc = CreateDoctorAfter(fname, lname, depart, ind);
 	

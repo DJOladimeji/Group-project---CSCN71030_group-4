@@ -19,6 +19,7 @@ namespace DoctorModuleUnitTest
 	TEST_CLASS(DoctorandPatientModuleUnitTest)
 	{
 	public:
+		
 		/*
 		TEST_METHOD(Testthecreationofdoctor)//testing to see of doctors is actually create when the CreateDocotr() function is called
 		{
@@ -39,7 +40,8 @@ namespace DoctorModuleUnitTest
 			Assert::AreEqual(expected.department, actual.department);
 			Assert::AreEqual(expected.index, actual.index);
 		}
-
+		*/
+		/*
 		TEST_METHOD(Testtoprintdoctortofile) // this test is to test to see of the doctors information is print the the ASCII text file
 		{
 
@@ -115,7 +117,8 @@ namespace DoctorModuleUnitTest
 
 			Assert::AreEqual(1, isthere);
 		}
-
+		*/
+		/*
 		TEST_METHOD(Testthecreationofpatient)
 		{
 			char fname[MAXCHARACTER] = "John";
@@ -136,7 +139,8 @@ namespace DoctorModuleUnitTest
 			Assert::AreEqual(expected.healthcardnumber, actual.healthcardnumber);
 			Assert::AreEqual(expected.patientinfo, actual.patientinfo);	
 		}
-
+		*/
+		/*
 		TEST_METHOD(Testifpatientisaddedtodocotor) //this test is to see if the patient is added to the doctor
 		{
 			DOCTOR doc;
@@ -161,6 +165,8 @@ namespace DoctorModuleUnitTest
 			Assert::AreEqual(actual.patient[0]->patientinfo, "Covid19"); 
 		}
 
+		*/
+		/* 
 		TEST_METHOD(TestPatientprintingtofile) //testing to see if the patient's infromation will print to the file 
 		{
 			PATIENT actual;
@@ -233,6 +239,9 @@ namespace DoctorModuleUnitTest
 			Assert::AreEqual(1, isthere); 
 		}
 		*/
+		TEST_METHOD(TestMethod1)
+		{
+		}
 	};
 }
 

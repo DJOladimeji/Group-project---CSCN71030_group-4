@@ -85,7 +85,7 @@ void writeDoctor(DOCTOR d, char* password, unsigned int hospitalchoice) {
     free(allocatedstring); 
 }
 //check login file for usernames
-int CheckUserName(char* username2) { 
+int CheckUserName(char* username2, char* username) {  
     
     char username[NAMELENGTH], buffer[NAMELENGTH];
     int n, m, i, j, line; 
@@ -97,10 +97,6 @@ int CheckUserName(char* username2) {
         exit(1); 
     } 
 
-    printf("\nEnter username:\n"); 
-    scanf_s("%s", username, NAMELENGTH); 
-
-  
     m = strlen(username); 
     line = 0; 
 

@@ -35,7 +35,7 @@ PATIENT CreatePatient(char* Firstname[], char* Lastname[], int Healthcardnumber,
 {
 	PATIENT p;
 
-	strncpy_s(p.firstname, MAXCHARACTER, Firstname, MAXCHARACTER);
+	strncpy_s(p.firstname, MAXCHARACTER, Firstname, MAXCHARACTER); 
 	strncpy_s(p.lastname, MAXCHARACTER, Lastname, MAXCHARACTER);
 	p.healthcardnumber = Healthcardnumber; 
 	strncpy_s(p.patientinfo, MAXAMOUNTOFPATIENTINFO, PatientInfo, MAXAMOUNTOFPATIENTINFO);

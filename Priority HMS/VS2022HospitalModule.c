@@ -226,3 +226,25 @@ void switchhospital(char* username, char* Sourcehospital[HOSPITALSIZE], unsigned
 	}
 }
 
+void hospitalstub(char* docnames[HOSPITALSIZE]) {
+	char name2[50] = { 'G','u','r','j','i','i','t','S','i','n','g','h','.','t','x','t','\0'};
+	char name1[50] = { 'I','l','y','a','s','Y','u','s','u','f','.','t','x','t','\0' };
+	char name3[50] = { 'M','a','x','D','a','b','s','k','i','.','t','x','t','\0' };
+	strcpy(docnames[0], name1);
+	strcpy(docnames[1], name2);
+	strcpy(docnames[2], name3);
+	//docnames[0] = name1; 
+	//docnames[1] = name2;
+	//docnames[2] = name3;
+
+}
+//this is for testing grabbing the doc file from the hospital file. in this case its IlyasYusuf.txt.
+void doctorstub() {
+	char fname[50] = { 'i','l','y','a','s' };
+	char lname[50] = { 'y','u','s','u','f' };
+	int patientnum = 5;
+	printf("%s %s %d\n", fname, lname, patientnum);
+
+}
+//this will "load" the hospital file.
+

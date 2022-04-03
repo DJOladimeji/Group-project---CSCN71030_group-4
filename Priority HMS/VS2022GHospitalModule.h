@@ -19,4 +19,6 @@ char* getdocfilefromhospital(char*, char* [HOSPITALSIZE]);
 void switchhospital(char*, char*[HOSPITALSIZE], unsigned int, char* [HOSPITALSIZE], unsigned int);
 bool addUsertohospital(char*, char* [HOSPITALSIZE], unsigned int);
 bool deleteUserfromhospital(char*, char* [HOSPITALSIZE], unsigned int);
+void hospitalstub(char* [HOSPITALSIZE]);
+void doctorstub();
 

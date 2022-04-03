@@ -77,7 +77,11 @@ int main(int argc, char* argcv)
 		{
 			int n = 0;
 			int p = 0;
-			n= CheckUserName(username);  
+			//ask them to input
+			char searchname[MAXCHARACTER] = { 0 }; 
+			printf("\nEnter username:\n"); 
+			scanf_s("%s", searchname, NAMELENGTH); 
+			n= CheckUserName(username,searchname);    
 			p = CheckPassword(password); 
 			if (n == 1 && p==1) {
 				
