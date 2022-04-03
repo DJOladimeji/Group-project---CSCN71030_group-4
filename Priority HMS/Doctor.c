@@ -288,3 +288,30 @@ void RemovePatientFromFile(char* username)
 	remove(filename);
 	rename(tempfile, filename); 
 }
+
+void printDoctorFile(char* username)
+{
+	char filename[MAXCHARACTER];
+	strcpy(filename, username);
+	strcat(filename, ".txt");
+
+	FILE* fp;
+	int ch;
+	unsigned long count = 0;
+
+	if ((fp = fopen(filename, "r")) == NULL)
+	{
+		perror("Unable to open file");
+		exit(1);
+	}
+
+	printf("\n");
+
+	while ((ch = getc(fp)) != EOF)
+	{
+		putc(ch, stdout);
+		count++;
+	}
+
+	fclose(fp);
+}

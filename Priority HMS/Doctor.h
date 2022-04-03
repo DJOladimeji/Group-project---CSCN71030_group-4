@@ -25,3 +25,4 @@ void PrintDoctorToFile(FILE*, DOCTOR);
 void RemovePatientFromFile(char*); 
 void printDoctorBackToFile(DOCTOR, char*);
 DOCTOR ReduceDoctorIndex(DOCTOR);
+void printDoctorFile(char*);
