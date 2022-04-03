@@ -228,7 +228,7 @@ void RemovePatientFromFile(char* username)
 			if ((i == n || buffer[i] == ' ' || buffer[i] == '\n') && j == m)
 			{
 				printf("%s", buffer);
-				printf("\n\nline = %d\n\n");
+				//printf("\n\nline = %d\n\n");
 				erase = line;
 			}
 
@@ -264,7 +264,7 @@ void RemovePatientFromFile(char* username)
 	bool keep_reading = true;
 	int current_line = 1;
 
-	printf("\n\nupdate  = %d\n\n", update);
+	//printf("\n\nupdate  = %d\n\n", update);
 
 	do
 	{
