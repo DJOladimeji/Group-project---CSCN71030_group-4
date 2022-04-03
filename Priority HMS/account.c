@@ -151,9 +151,9 @@ int logIn(char* username, char* password, char* hospital[MAX_HOSP_SIZE]) {
 */
 void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* password,unsigned int hospitalchoice)  
 {
-	bool ok = true;
+	bool keepasking = true;
 	char tempName =0;
-	while (ok)
+	while (keepasking) 
 	{
 		char** usernamefiles = 0;
 		char** passwordfiles = 0;
@@ -181,8 +181,8 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 		}
 		printf("1. Add a patient\n");
 		printf("2. Remove a Patient\n"); 
-		printf("3. Delete Account\n"); 
-		printf("4. Switch Hospitals\n");
+		printf("3. Switch Hospitals\n");
+		printf("4. Delete Account\n"); 
 		printf("5. Logout\n\n"); 
 
 		printf("what do you want to do: "); 
@@ -217,41 +217,10 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			printf("2. Remove a Patient\n\n");
 			break;
 		}
+		
 		case 3:
 		{
-			printf("3. Delete Account\n\n");
-			//-------------------------------------------------------------------
-			//This is where code will go to call the functions that will erase the doctor file 
-			//and will remove their information from the hospital files they are in and their login in 
-			//info from the login text file
-			//-------------------------------------------------------------------
-			unsigned int index = 0;
-			char filename[MAXCHARACTER];
-			strcpy(filename, username); 
-			strcat(filename, ".txt"); 
-			Read_Hospital_File(hospital, hospitalchoice);
-			Read_UserNames_File(usernamefiles, hospitalchoicearray);
-			for (int i = 0; i < 30; i++) {
-				if (usernamefiles[i]) {
-					if (strcmp(username, usernamefiles[i]) == 0) {
-						hospitalchoice = hospitalchoicearray[i];
-					}
-				}
-			}
-			Read_Passwords_File(passwordfiles);
-			deleteUserName(username, usernamefiles, hospitalchoicearray);
-			deletePasswords(password, passwordfiles);
-			deleteUserfromhospital(username, hospital, hospitalchoice);
-			remove(filename); 
-			free(usernamefiles);  
-			free(passwordfiles);
-			printf("Account Deleted\n\n");
-			break;
-		}
-
-		case 4:
-		{
-			printf("4. Switch Hospitals\n\n");
+			printf("3. Switch Hospitals\n\n");
 			//-------------------------------------------------------------------
 			//This is where code will go to call the function that will 'cut' the information from the 
 			//doctors current hospital fill and put it into the hospital file that they want
@@ -334,10 +303,43 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 
 			}
 		}
+		case 4:
+		{
+			printf("4. Delete Account\n\n");
+			//-------------------------------------------------------------------
+			//This is where code will go to call the functions that will erase the doctor file 
+			//and will remove their information from the hospital files they are in and their login in 
+			//info from the login text file
+			//-------------------------------------------------------------------
+			unsigned int index = 0;
+			char filename[MAXCHARACTER];
+			strcpy(filename, username);
+			strcat(filename, ".txt");
+			Read_Hospital_File(hospital, hospitalchoice);
+			Read_UserNames_File(usernamefiles, hospitalchoicearray);
+			for (int i = 0; i < 30; i++) {
+				if (usernamefiles[i]) {
+					if (strcmp(username, usernamefiles[i]) == 0) {
+						hospitalchoice = hospitalchoicearray[i];
+					}
+				}
+			}
+			Read_Passwords_File(passwordfiles);
+			deleteUserName(username, usernamefiles, hospitalchoicearray);
+			deletePasswords(password, passwordfiles);
+			deleteUserfromhospital(username, hospital, hospitalchoice);
+			remove(filename);
+			free(usernamefiles);
+			free(passwordfiles);
+			printf("Account Deleted\n\n");
+			keepasking = false;
+			break;
+		}
+
 		case 5:
 		{
 			printf("5. Logout\n\n");
-			ok = false;
+			keepasking = false; 
 			if (usernamefiles) {
 				free(usernamefiles);
 			}
@@ -353,7 +355,7 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 		default:
 		{
 			printf("Wrong input\n");
-			ok = false;
+			keepasking = false;
 			if (usernamefiles) {
 				free(usernamefiles);
 			}

@@ -91,14 +91,17 @@ int main(int argc, char* argcv)
 			if (n == 1 && p==1) {
 				
 				AfterLoginWindow(hospital,username,password,hospitalchoice);
+				break; 
 			}
 			else
 			{
+				printf("Failed Login!\n\n"); 
 				break;
 			}
 			//---------------------------------------------------------------
 			//This is where code will go to get the users password and see if it is correct before continuing
 			//---------------------------------------------------------------
+
 		}
 
 		case 3://QUIT
