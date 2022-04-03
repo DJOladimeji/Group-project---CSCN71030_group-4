@@ -185,7 +185,7 @@ void printDoctorBackToFile(DOCTOR d, char* username)
 
 DOCTOR ReduceDoctorIndex(DOCTOR d)
 {
-	d.index = d.index = 1;
+	d.index = d.index - 1;
 	
 	return d;
 }
