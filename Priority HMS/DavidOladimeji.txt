@@ -1,0 +1,8 @@
+Doctor: David Oladimeji - Department: Clinic - Number of Patient = 2
+
+
+
+
+Patient: John Smith - -858993460
+Patient: Adam Young - 246873
+Patient Information: Cancer

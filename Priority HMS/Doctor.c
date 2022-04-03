@@ -256,7 +256,7 @@ void RemovePatientFromFile(char* username)
 	fp2 = fopen(filename, "r");
 	fptemp = fopen(tempfile, "w");
 
-	printf("\nEnter the new information for the task:\n");
+	printf("\nEnter the word ok: ");
 	fgets(newCh, sizeof(newCh), stdin);
 	fgets(newCh, sizeof(newCh), stdin);
 
@@ -283,5 +283,5 @@ void RemovePatientFromFile(char* username)
 	fclose(fptemp);
 
 	remove(filename);
-	rename(tempfile, "Tasks.txt");
+	rename(tempfile, filename); 
 }

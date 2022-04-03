@@ -1,0 +1,6 @@
+Doctor: David Oladimeji - Department: Clinic - Number of Patient = 2
+
+
+
+Patient: John Smith - 123456
+Patient Information: Cancer
