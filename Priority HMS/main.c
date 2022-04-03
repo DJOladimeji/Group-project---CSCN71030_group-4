@@ -33,8 +33,8 @@ int main(int argc, char* argcv)
 		char Departmentname[MAXCHARACTER] = { 0 };
 		char* password = (char*)malloc(PASS_LEN+1);  
 		char** hospital = 0;
-		hospital = malloc(10 * sizeof(char*));
-		for (int i = 0; i < 10; i++) {
+		hospital = malloc(argc * sizeof(char*));
+		for (int i = 0; i < argc; i++) {
 			if (hospital) {
 				hospital[i] = malloc(MAXSTRINGLENGTH);
 				if (hospital[i]) {

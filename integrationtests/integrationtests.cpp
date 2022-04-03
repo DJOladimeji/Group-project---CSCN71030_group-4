@@ -69,7 +69,7 @@ namespace integrationtests
 			Assert::AreEqual(expected, c);
 		}
 	};
-
+	*/
 	TEST_CLASS(Hospital)
 	{
 	public:

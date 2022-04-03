@@ -185,11 +185,14 @@ void AfterLoginWindow(char* hospital[MAX_HOSP_SIZE], char* username, char* passw
 			deletePasswords(password, passwordfiles);
 			deleteUserfromhospital(username, hospital, hospitalchoice);
 			remove(filename);
+			//Freeing everything we've allocated memory to, then exiting.
 			free(usernamefiles);
 			free(passwordfiles);
+			free(destinationhospital); 
 			printf("Account Deleted\n\n");
-			keepasking = false;
-			break;
+			printf("Goodbye\n"); 
+			free(hospital); 
+			exit(1);  
 		}
 
 		case 5:
