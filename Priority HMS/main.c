@@ -79,10 +79,13 @@ int main(int argc, char* argcv)
 			int p = 0;
 			//ask them to input
 			char searchname[MAXCHARACTER] = { 0 }; 
-			printf("\nEnter username:\n"); 
+			printf("\nEnter username EXACTLY!:\n"); 
 			scanf_s("%s", searchname, NAMELENGTH); 
+			char searchpassword[MAXCHARACTER] = { 0 }; 
+			printf("\nEnter password EXACTLY!:\n");
+			scanf_s("%s", searchpassword, NAMELENGTH); 
 			n= CheckUserName(username,searchname);    
-			p = CheckPassword(password, searchname);  
+			p = CheckPassword(password, searchpassword);   
 			if (n == 1 && p==1) {
 				
 				AfterLoginWindow(hospital,username,password,hospitalchoice);
